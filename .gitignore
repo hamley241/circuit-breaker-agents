@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Experimental files - keep locally but exclude from repo
+*.bak
+*_backup.py
+test_*.py
+experiment_*.py
+mini_*.py
+quick_*.py
+modal_*.py
+api_clients.py
+simulator.py
+cost_estimator.py
+tuning_harness.py
+
+# Development artifacts
+exp-*.py
+run_*.py
+final_*.py
+cfr_*.json
+comparison_*.json
+exp_*.json
+*-results.json
+*-test*.json
+
+# Documentation drafts (keep final versions only)
+BUGFIX_CHANGELOG.md
+FINAL_REPORT.md
+TODO.md
+TROUBLESHOOTING.md
+TUNING-NOTES.md
+TUNING_HARNESS_README.md
+DOCUMENTATION_INDEX.md
+REAL_API_*.md
+MODAL_REAL_API_GUIDE.md
+analysis-charter.md
+exp-001b-plan.md
+statistical-analysis.md
+RESULTS_REPRODUCIBLE.md
+RESULTS_V2.md
+RESULTS_VALIDATED.md
+
+# Result artifacts - keep key files only
+results/cfr_*
+results/diagnostics*/
+results/tuning/
+results/test-*
+results/exp-*
+
+# Keep only essential results
+!results/montecarlo_*_5000_*.json
+!results/montecarlo_v2_*_3000_*.json
+
+# Development directories
+workloads/
