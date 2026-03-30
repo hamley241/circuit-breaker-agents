@@ -1,0 +1,40 @@
+{
+  "conditions": {
+    "NO_PROTECTION": {
+      "runs": 55,
+      "avg_cfr": 0.2182,
+      "completion_rate": 0.4545,
+      "total_circuit_trips": 0,
+      "blocked_calls": 0
+    },
+    "TIMEOUT_ONLY": {
+      "runs": 55,
+      "avg_cfr": 0.2727,
+      "completion_rate": 0.4,
+      "total_circuit_trips": 0,
+      "blocked_calls": 0
+    },
+    "SIMPLE_CB": {
+      "runs": 55,
+      "avg_cfr": 0.1091,
+      "completion_rate": 0.4,
+      "total_circuit_trips": 51,
+      "blocked_calls": 0
+    },
+    "AI_CB": {
+      "runs": 55,
+      "avg_cfr": 0.0909,
+      "completion_rate": 0.4727,
+      "total_circuit_trips": 50,
+      "blocked_calls": 0
+    },
+    "ADAPTIVE_CB": {
+      "runs": 55,
+      "avg_cfr": 0.0545,
+      "completion_rate": 0.6182,
+      "total_circuit_trips": 47,
+      "blocked_calls": 0
+    }
+  },
+  "elapsed_seconds": 0.016759872436523438
+}

@@ -1,0 +1,13 @@
+{
+  "config": {
+    "chain_length": 3,
+    "runs": 1000
+  },
+  "results": {
+    "NO_CB": 0.19,
+    "SIMPLE_CB": 0.135,
+    "AI_CB": 0.077,
+    "ADAPTIVE_CB": 0.044
+  },
+  "ts": "20260330_112708"
+}

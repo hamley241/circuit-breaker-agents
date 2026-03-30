@@ -1,0 +1,57 @@
+{
+  "experiment": "exp-001-4-agent-chain-FIXED",
+  "chain_length": 4,
+  "runs_per_condition": 500,
+  "failure_injection_rate": 0.35,
+  "conditions": [
+    "NO_CB",
+    "SIMPLE_CB",
+    "AI_CB",
+    "ADAPTIVE_CB"
+  ],
+  "summary": {
+    "NO_CB": {
+      "avg_cfr_pct": 9.4,
+      "completion_rate_pct": 100.0,
+      "avg_chain_reach": 4.0,
+      "total_trips": 0,
+      "total_prevented": 0,
+      "avg_cfr_reduction_pct": 0.0,
+      "raw_cfr": 0.094
+    },
+    "SIMPLE_CB": {
+      "avg_cfr_pct": 7.8,
+      "completion_rate_pct": 100.0,
+      "avg_chain_reach": 4.0,
+      "total_trips": 0,
+      "total_prevented": 0,
+      "avg_cfr_reduction_pct": 0.0,
+      "raw_cfr": 0.078
+    },
+    "AI_CB": {
+      "avg_cfr_pct": 0.0,
+      "completion_rate_pct": 21.6,
+      "avg_chain_reach": 1.758,
+      "total_trips": 392,
+      "total_prevented": 392,
+      "avg_cfr_reduction_pct": 78.4,
+      "raw_cfr": 0.0
+    },
+    "ADAPTIVE_CB": {
+      "avg_cfr_pct": 0.0,
+      "completion_rate_pct": 26.0,
+      "avg_chain_reach": 1.828,
+      "total_trips": 370,
+      "total_prevented": 370,
+      "avg_cfr_reduction_pct": 74.0,
+      "raw_cfr": 0.0
+    }
+  },
+  "fixes_applied": [
+    "Fixed CFR calculation to account for prevented cascades",
+    "Reduced circuit breaker sensitivity (Chain 6 bug)",
+    "Proper circuit trip counting for CFR reduction (Chain 2 bug)",
+    "Consistent thresholds between quality detection and circuit breaking"
+  ],
+  "timestamp": "2026-03-30 04:40:45"
+}

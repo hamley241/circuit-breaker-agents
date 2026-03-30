@@ -1,0 +1,228 @@
+{
+  "runs": [
+    {
+      "run_id": "NO_PROTECTION_control_000",
+      "condition": "NO_PROTECTION",
+      "workload": "control",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 2092
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "circuit_breaker_b": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936078.842933,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "control"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936078.842935,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936078.842973,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.8954343080468996,
+            "tokens": 1461
+          }
+        },
+        {
+          "timestamp": 1773936078.842974,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936078.843006,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.9482230285191087,
+            "tokens": 631
+          }
+        },
+        {
+          "timestamp": 1773936078.843007,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "The capital city of France is Paris. This is a well-established geographical fact.",
+        "confidence": 0.8954343080468996,
+        "token_usage": 1461,
+        "reasoning": "Processed request successfully in agent_a"
+      },
+      "agent_b_result": {
+        "content": "Confirmed: Paris is indeed the capital city of France. High confidence in this established fact.",
+        "confidence": 0.9482230285191087,
+        "token_usage": 631,
+        "reasoning": "Processed request successfully in agent_b"
+      }
+    },
+    {
+      "run_id": "NO_PROTECTION_control_001",
+      "condition": "NO_PROTECTION",
+      "workload": "control",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 2173
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "circuit_breaker_b": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936078.843078,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "control"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936078.8430789,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936078.8431091,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.870203229478842,
+            "tokens": 618
+          }
+        },
+        {
+          "timestamp": 1773936078.8431098,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936078.843138,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.7639579043455444,
+            "tokens": 1555
+          }
+        },
+        {
+          "timestamp": 1773936078.8431392,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "The capital city of France is Paris. This is a well-established geographical fact.",
+        "confidence": 0.870203229478842,
+        "token_usage": 618,
+        "reasoning": "Processed request successfully in agent_a"
+      },
+      "agent_b_result": {
+        "content": "Confirmed: Paris is indeed the capital city of France. High confidence in this established fact.",
+        "confidence": 0.7639579043455444,
+        "token_usage": 1555,
+        "reasoning": "Processed request successfully in agent_b"
+      }
+    }
+  ],
+  "avg_cfr": 0.0,
+  "completion_rate": 1.0,
+  "total_token_usage": 4265,
+  "avg_token_usage_per_run": 2132.5,
+  "total_recovery_attempts": 0,
+  "total_circuit_trips": 0,
+  "protection_activation_rate": 0.0,
+  "elapsed_seconds": 0.0003058910369873047,
+  "config": {
+    "workload": "control",
+    "runs": 2,
+    "condition": "NO_PROTECTION",
+    "seed": 100,
+    "turn_budget": 25,
+    "verbose": false
+  }
+}

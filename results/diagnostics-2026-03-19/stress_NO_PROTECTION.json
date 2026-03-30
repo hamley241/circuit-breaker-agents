@@ -1,0 +1,223 @@
+{
+  "runs": [
+    {
+      "run_id": "NO_PROTECTION_stress_000",
+      "condition": "NO_PROTECTION",
+      "workload": "stress",
+      "task_completed": false,
+      "metrics": {
+        "agent_a_failures": 1,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": false,
+        "total_turns": 2,
+        "total_token_usage": 872
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 1,
+        "cascaded_failures": 0,
+        "contained_failures": 1,
+        "total_tasks_with_failure": 1
+      },
+      "circuit_breaker_a": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "circuit_breaker_b": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936081.655948,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "stress"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936081.655951,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936081.6559732,
+          "turn_number": 1,
+          "event_type": "agent_failure",
+          "agent_id": "agent_a",
+          "details": {
+            "error": "Simulated API timeout",
+            "error_type": "TimeoutError"
+          }
+        },
+        {
+          "timestamp": 1773936081.6559758,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936081.656003,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.2,
+            "tokens": 872
+          }
+        },
+        {
+          "timestamp": 1773936081.6560042,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": false
+            }
+          }
+        }
+      ],
+      "agent_a_result": null,
+      "agent_b_result": {
+        "content": "Low confidence response from agent_b",
+        "confidence": 0.2,
+        "token_usage": 872,
+        "reasoning": "Uncertain about this response"
+      }
+    },
+    {
+      "run_id": "NO_PROTECTION_stress_001",
+      "condition": "NO_PROTECTION",
+      "workload": "stress",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 2542
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "circuit_breaker_b": {
+        "state": "NO_PROTECTION",
+        "call_count": 1
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936081.656082,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "stress"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936081.6560829,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936081.6561081,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.2,
+            "tokens": 1167
+          }
+        },
+        {
+          "timestamp": 1773936081.656109,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936081.656139,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.8828244349822025,
+            "tokens": 1375
+          }
+        },
+        {
+          "timestamp": 1773936081.65614,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "Low confidence response from agent_a",
+        "confidence": 0.2,
+        "token_usage": 1167,
+        "reasoning": "Uncertain about this response"
+      },
+      "agent_b_result": {
+        "content": "Final routing recommendation based on Agent A analysis, with contingency planning for alternative paths.",
+        "confidence": 0.8828244349822025,
+        "token_usage": 1375,
+        "reasoning": "Processed request successfully in agent_b"
+      }
+    }
+  ],
+  "avg_cfr": 0.0,
+  "completion_rate": 0.5,
+  "total_token_usage": 3414,
+  "avg_token_usage_per_run": 1707.0,
+  "total_recovery_attempts": 0,
+  "total_circuit_trips": 0,
+  "protection_activation_rate": 0.0,
+  "elapsed_seconds": 0.0003216266632080078,
+  "config": {
+    "workload": "stress",
+    "runs": 2,
+    "condition": "NO_PROTECTION",
+    "seed": 200,
+    "turn_budget": 25,
+    "verbose": false
+  }
+}

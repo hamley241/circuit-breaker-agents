@@ -1,0 +1,32 @@
+{
+  "name": "control_workload",
+  "description": "Deterministic green-path control workload for circuit breaker validation",
+  "type": "control",
+  "expected_success_rate": 0.95,
+  "failure_rates": {
+    "api_timeout": 0.05,
+    "confidence_decay": 0.03,
+    "context_overflow": 0.02,
+    "cascading_hallucination": 0.01
+  },
+  "agent_prompts": {
+    "agent_a": "Retrieve the capital city of France from your knowledge base. This is a straightforward factual query that should always succeed.",
+    "agent_b": "Confirm and validate the capital city provided by Agent A. Cross-reference this known fact and provide confidence assessment."
+  },
+  "expected_outputs": {
+    "agent_a": "The capital city of France is Paris. This is a well-established geographical fact.",
+    "agent_b": "Confirmed: Paris is indeed the capital city of France. High confidence in this established fact."
+  },
+  "success_criteria": {
+    "agent_a_must_mention": ["Paris", "capital", "France"],
+    "agent_b_must_confirm": ["Paris", "confirmed", "capital"],
+    "minimum_confidence": 0.8
+  },
+  "task_description": "Simple factual retrieval and validation task designed to test infrastructure and circuit breaker logic without complex failure modes. Should succeed in >95% of cases unless protection mechanisms interfere.",
+  "recovery_expectations": {
+    "TIMEOUT_ONLY": "Should retry once if timeout occurs, then succeed",
+    "SIMPLE_CB": "Should skip failing agent but still complete task",
+    "AI_CB": "Should use alternate model/prompt if needed",
+    "ADAPTIVE_CB": "Should route to safe-mode but still provide correct answer"
+  }
+}

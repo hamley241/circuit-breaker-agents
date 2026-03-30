@@ -1,0 +1,33 @@
+{
+  "name": "stress_workload",
+  "description": "Simplified stress workload placeholder for multi-agent routing scenario",
+  "type": "stress",
+  "expected_success_rate": 0.3,
+  "failure_rates": {
+    "api_timeout": 0.25,
+    "confidence_decay": 0.30,
+    "context_overflow": 0.20,
+    "cascading_hallucination": 0.35
+  },
+  "agent_prompts": {
+    "agent_a": "Complex multi-step routing analysis requiring coordination across multiple decision points. Analyze the optimal path through a network with changing constraints.",
+    "agent_b": "Synthesize Agent A's routing analysis and provide final recommendation. Must handle potential cascading complexity from upstream analysis."
+  },
+  "expected_outputs": {
+    "agent_a": "Completed routing analysis with identified optimal path considering current constraints and network topology.",
+    "agent_b": "Final routing recommendation based on Agent A analysis, with contingency planning for alternative paths."
+  },
+  "success_criteria": {
+    "agent_a_must_mention": ["routing", "analysis", "path"],
+    "agent_b_must_mention": ["recommendation", "analysis", "routing"],
+    "minimum_confidence": 0.4
+  },
+  "task_description": "Simplified placeholder for complex multi-agent routing scenario. Designed to trigger circuit breaker conditions and test recovery policies under stress.",
+  "recovery_expectations": {
+    "TIMEOUT_ONLY": "May fail due to complexity, retry policy provides limited help",
+    "SIMPLE_CB": "Skip-and-continue should maintain partial functionality",
+    "AI_CB": "Alternate models may handle complexity better",
+    "ADAPTIVE_CB": "Safe-mode should provide degraded but functional routing"
+  },
+  "notes": "This is a simplified placeholder. Full stress workload implementation should include ≥25 turns and proper recovery hooks as described in exp-001b-plan.md"
+}

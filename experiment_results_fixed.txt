@@ -1,0 +1,71 @@
+
+############################################################
+exp-001 Circuit Breaker Experiment
+Mode: FULL (55 runs/condition), SIMULATED
+############################################################
+
+==================================================
+Running condition: NO_PROTECTION (55 runs, SIMULATED mode)
+==================================================
+  Completed 10/55
+  Completed 20/55
+  Completed 30/55
+  Completed 40/55
+  Completed 50/55
+
+==================================================
+Running condition: TIMEOUT_ONLY (55 runs, SIMULATED mode)
+==================================================
+  Completed 10/55
+  Completed 20/55
+  Completed 30/55
+  Completed 40/55
+  Completed 50/55
+
+==================================================
+Running condition: SIMPLE_CB (55 runs, SIMULATED mode)
+==================================================
+  Completed 10/55
+  Completed 20/55
+  Completed 30/55
+  Completed 40/55
+  Completed 50/55
+
+==================================================
+Running condition: AI_CB (55 runs, SIMULATED mode)
+==================================================
+  Completed 10/55
+  Completed 20/55
+  Completed 30/55
+  Completed 40/55
+  Completed 50/55
+
+==================================================
+Running condition: ADAPTIVE_CB (55 runs, SIMULATED mode)
+==================================================
+  Completed 10/55
+  Completed 20/55
+  Completed 30/55
+  Completed 40/55
+  Completed 50/55
+
+============================================================
+EXPERIMENT RESULTS SUMMARY
+============================================================
+
+Condition       Runs     Avg CFR      Completion   Trips   
+-------------------------------------------------------
+NO_PROTECTION   55       0.2909       0.4364       0       
+TIMEOUT_ONLY    55       0.2182       0.4545       0       
+SIMPLE_CB       55       0.0364       0.5818       45      
+AI_CB           55       0.0727       0.2182       81      
+ADAPTIVE_CB     55       0.0000       0.2000       93      
+
+Elapsed time: 0.01s
+
+** H1 Check: CFR reduction vs TIMEOUT_ONLY baseline **
+   Baseline CFR: 0.2182
+   AI_CB CFR:    0.0727
+   Reduction:    66.7%
+   Target:       ≥30%
+   Result:       ✅ PASS

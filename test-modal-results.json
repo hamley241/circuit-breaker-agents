@@ -1,0 +1,1859 @@
+{
+  "summary": {
+    "conditions": {
+      "NO_PROTECTION": {
+        "runs": 10,
+        "avg_cfr": 0.1,
+        "completion_rate": 0.6,
+        "total_circuit_trips": 0,
+        "blocked_calls": 0
+      },
+      "TIMEOUT_ONLY": {
+        "runs": 10,
+        "avg_cfr": 0.2,
+        "completion_rate": 0.6,
+        "total_circuit_trips": 0,
+        "blocked_calls": 0
+      },
+      "SIMPLE_CB": {
+        "runs": 10,
+        "avg_cfr": 0.1,
+        "completion_rate": 0.5,
+        "total_circuit_trips": 7,
+        "blocked_calls": 0
+      },
+      "AI_CB": {
+        "runs": 10,
+        "avg_cfr": 0.3,
+        "completion_rate": 0.4,
+        "total_circuit_trips": 7,
+        "blocked_calls": 0
+      },
+      "ADAPTIVE_CB": {
+        "runs": 10,
+        "avg_cfr": 0.0,
+        "completion_rate": 0.5,
+        "total_circuit_trips": 10,
+        "blocked_calls": 0
+      }
+    },
+    "elapsed_seconds": 0.0028259754180908203
+  },
+  "runs": {
+    "NO_PROTECTION": [
+      {
+        "run_id": "NO_PROTECTION_000",
+        "condition": "NO_PROTECTION",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_001",
+        "condition": "NO_PROTECTION",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_002",
+        "condition": "NO_PROTECTION",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 0
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_003",
+        "condition": "NO_PROTECTION",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_004",
+        "condition": "NO_PROTECTION",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 1,
+          "cascaded_failures": 0,
+          "contained_failures": 1,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_005",
+        "condition": "NO_PROTECTION",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_006",
+        "condition": "NO_PROTECTION",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_007",
+        "condition": "NO_PROTECTION",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_008",
+        "condition": "NO_PROTECTION",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      },
+      {
+        "run_id": "NO_PROTECTION_009",
+        "condition": "NO_PROTECTION",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        },
+        "circuit_breaker_b": {
+          "state": "NO_PROTECTION",
+          "call_count": 1
+        }
+      }
+    ],
+    "TIMEOUT_ONLY": [
+      {
+        "run_id": "TIMEOUT_ONLY_000",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_001",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_002",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_003",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_004",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_005",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_006",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_007",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_008",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 1,
+          "cascaded_failures": 0,
+          "contained_failures": 1,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      },
+      {
+        "run_id": "TIMEOUT_ONLY_009",
+        "condition": "TIMEOUT_ONLY",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        },
+        "circuit_breaker_b": {
+          "state": "TIMEOUT_ONLY",
+          "timeout_seconds": 30.0,
+          "failure_count": 0
+        }
+      }
+    ],
+    "SIMPLE_CB": [
+      {
+        "run_id": "SIMPLE_CB_000",
+        "condition": "SIMPLE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_001",
+        "condition": "SIMPLE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_002",
+        "condition": "SIMPLE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_003",
+        "condition": "SIMPLE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 1,
+          "cascaded_failures": 0,
+          "contained_failures": 1,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_004",
+        "condition": "SIMPLE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_005",
+        "condition": "SIMPLE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        },
+        "circuit_breaker_b": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_006",
+        "condition": "SIMPLE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        },
+        "circuit_breaker_b": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_007",
+        "condition": "SIMPLE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_008",
+        "condition": "SIMPLE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 1,
+          "cascaded_failures": 0,
+          "contained_failures": 1,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "state": "OPEN",
+          "trip_count": 1,
+          "recovery_count": 0,
+          "consecutive_failures": 1
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      },
+      {
+        "run_id": "SIMPLE_CB_009",
+        "condition": "SIMPLE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        },
+        "circuit_breaker_b": {
+          "state": "CLOSED",
+          "trip_count": 0,
+          "recovery_count": 0,
+          "consecutive_failures": 0
+        }
+      }
+    ],
+    "AI_CB": [
+      {
+        "run_id": "AI_CB_000",
+        "condition": "AI_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.74375,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.81,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_001",
+        "condition": "AI_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 1,
+          "cascaded_failures": 0,
+          "contained_failures": 1,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1274598,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_002",
+        "condition": "AI_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.74375,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.81,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_003",
+        "condition": "AI_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1275828,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.127597,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      },
+      {
+        "run_id": "AI_CB_004",
+        "condition": "AI_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1276276,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_005",
+        "condition": "AI_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.74375,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.81,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_006",
+        "condition": "AI_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.74375,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.81,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_007",
+        "condition": "AI_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1277838,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "AI_CB_008",
+        "condition": "AI_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.74375,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1278555,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      },
+      {
+        "run_id": "AI_CB_009",
+        "condition": "AI_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 1.0,
+          "initial_failures": 1,
+          "cascaded_failures": 1,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1278775,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      }
+    ],
+    "ADAPTIVE_CB": [
+      {
+        "run_id": "ADAPTIVE_CB_000",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.7224999999999999,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.792,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_001",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1280475,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.792,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_002",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.7224999999999999,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1281145,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_003",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.7224999999999999,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1281679,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_004",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.7224999999999999,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.792,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_005",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.12826,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1282732,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_006",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 1,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 1,
+          "cascaded_failures": 0,
+          "contained_failures": 1,
+          "total_tasks_with_failure": 1
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1282947,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1283193,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_007",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.7224999999999999,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.792,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_008",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": true,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 0,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": true,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1284032,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 0,
+          "RPre_predictability": 0.792,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_CLOSED",
+          "consecutive_failures": 0,
+          "trip_log": [],
+          "trip_count": 0
+        }
+      },
+      {
+        "run_id": "ADAPTIVE_CB_009",
+        "condition": "ADAPTIVE_CB",
+        "task_completed": false,
+        "metrics": {
+          "agent_a_failures": 0,
+          "agent_b_failures": 1,
+          "circuit_trips": 0,
+          "recovery_attempts": 0,
+          "task_completed": false,
+          "total_turns": 2
+        },
+        "cfr": {
+          "cfr_rate": 0.0,
+          "initial_failures": 0,
+          "cascaded_failures": 0,
+          "contained_failures": 0,
+          "total_tasks_with_failure": 0
+        },
+        "circuit_breaker_a": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1284451,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        },
+        "circuit_breaker_b": {
+          "RCon_consistency_rate": 1.0,
+          "RRob_failure_count": 1,
+          "RPre_predictability": 0.0,
+          "RSaf_recovery_attempts": 0,
+          "state": "REASONING_OPEN",
+          "consecutive_failures": 1,
+          "trip_log": [
+            {
+              "timestamp": 1773929218.1284592,
+              "from": "REASONING_CLOSED",
+              "to": "REASONING_OPEN"
+            }
+          ],
+          "trip_count": 1
+        }
+      }
+    ]
+  },
+  "pilot": true,
+  "runs_per_condition": 2,
+  "real_mode": false
+}

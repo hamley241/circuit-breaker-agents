@@ -1,0 +1,236 @@
+{
+  "runs": [
+    {
+      "run_id": "SIMPLE_CB_control_000",
+      "condition": "SIMPLE_CB",
+      "workload": "control",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 2406
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "state": "CLOSED",
+        "trip_count": 0,
+        "recovery_count": 0,
+        "consecutive_failures": 0
+      },
+      "circuit_breaker_b": {
+        "state": "CLOSED",
+        "trip_count": 0,
+        "recovery_count": 0,
+        "consecutive_failures": 0
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936078.907809,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "control"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936078.9078112,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936078.9078422,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.8716510845380974,
+            "tokens": 1594
+          }
+        },
+        {
+          "timestamp": 1773936078.907843,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936078.9078689,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.8942412309870724,
+            "tokens": 812
+          }
+        },
+        {
+          "timestamp": 1773936078.907871,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "The capital city of France is Paris. This is a well-established geographical fact.",
+        "confidence": 0.8716510845380974,
+        "token_usage": 1594,
+        "reasoning": "Processed request successfully in agent_a"
+      },
+      "agent_b_result": {
+        "content": "Confirmed: Paris is indeed the capital city of France. High confidence in this established fact.",
+        "confidence": 0.8942412309870724,
+        "token_usage": 812,
+        "reasoning": "Processed request successfully in agent_b"
+      }
+    },
+    {
+      "run_id": "SIMPLE_CB_control_001",
+      "condition": "SIMPLE_CB",
+      "workload": "control",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 1934
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "state": "CLOSED",
+        "trip_count": 0,
+        "recovery_count": 0,
+        "consecutive_failures": 0
+      },
+      "circuit_breaker_b": {
+        "state": "CLOSED",
+        "trip_count": 0,
+        "recovery_count": 0,
+        "consecutive_failures": 0
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936078.9079301,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "control"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936078.9079309,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936078.907956,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.8417493643405589,
+            "tokens": 738
+          }
+        },
+        {
+          "timestamp": 1773936078.907957,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936078.907979,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.8453855160933945,
+            "tokens": 1196
+          }
+        },
+        {
+          "timestamp": 1773936078.90798,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "The capital city of France is Paris. This is a well-established geographical fact.",
+        "confidence": 0.8417493643405589,
+        "token_usage": 738,
+        "reasoning": "Processed request successfully in agent_a"
+      },
+      "agent_b_result": {
+        "content": "Confirmed: Paris is indeed the capital city of France. High confidence in this established fact.",
+        "confidence": 0.8453855160933945,
+        "token_usage": 1196,
+        "reasoning": "Processed request successfully in agent_b"
+      }
+    }
+  ],
+  "avg_cfr": 0.0,
+  "completion_rate": 1.0,
+  "total_token_usage": 4340,
+  "avg_token_usage_per_run": 2170.0,
+  "total_recovery_attempts": 0,
+  "total_circuit_trips": 0,
+  "protection_activation_rate": 0.0,
+  "elapsed_seconds": 0.0002620220184326172,
+  "config": {
+    "workload": "control",
+    "runs": 2,
+    "condition": "SIMPLE_CB",
+    "seed": 100,
+    "turn_budget": 25,
+    "verbose": false
+  }
+}

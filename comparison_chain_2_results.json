@@ -1,0 +1,27 @@
+{
+  "chain_length": 2,
+  "timestamp": "2026-03-30 04:44:07",
+  "summary": {
+    "NO_CB": {
+      "avg_cfr": 0.0,
+      "completion_rate": 1.0,
+      "avg_chain_reach": 2.0,
+      "total_trips": 0,
+      "avg_trips_per_run": 0.0
+    },
+    "ADAPTIVE_CB_ORIGINAL": {
+      "avg_cfr": 0.0,
+      "completion_rate": 0.28,
+      "avg_chain_reach": 0.76,
+      "total_trips": 18,
+      "avg_trips_per_run": 0.72
+    },
+    "ADAPTIVE_CB_FIXED": {
+      "avg_cfr": 0.02,
+      "completion_rate": 1.0,
+      "avg_chain_reach": 2.0,
+      "total_trips": 0,
+      "avg_trips_per_run": 0.0
+    }
+  }
+}

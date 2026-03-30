@@ -1,0 +1,264 @@
+{
+  "runs": [
+    {
+      "run_id": "ADAPTIVE_CB_stress_000",
+      "condition": "ADAPTIVE_CB",
+      "workload": "stress",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 2668
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "RCon_consistency_rate": 1.0,
+        "RRob_failure_count": 0,
+        "RPre_predictability": 0.7911107174733402,
+        "RSaf_recovery_attempts": 0,
+        "state": "REASONING_CLOSED",
+        "consecutive_failures": 0,
+        "trip_log": [],
+        "trip_count": 0
+      },
+      "circuit_breaker_b": {
+        "RCon_consistency_rate": 1.0,
+        "RRob_failure_count": 1,
+        "RPre_predictability": 0.0,
+        "RSaf_recovery_attempts": 0,
+        "state": "REASONING_OPEN",
+        "consecutive_failures": 1,
+        "trip_log": [
+          {
+            "timestamp": 1773936081.784929,
+            "from": "REASONING_CLOSED",
+            "to": "REASONING_OPEN"
+          }
+        ],
+        "trip_count": 1
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936081.784868,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "stress"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936081.78487,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936081.784905,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.9306090077324317,
+            "tokens": 1499
+          }
+        },
+        {
+          "timestamp": 1773936081.784906,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936081.7849312,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.2,
+            "tokens": 1169
+          }
+        },
+        {
+          "timestamp": 1773936081.7849321,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "Completed routing analysis with identified optimal path considering current constraints and network topology.",
+        "confidence": 0.9306090077324317,
+        "token_usage": 1499,
+        "reasoning": "Processed request successfully in agent_a"
+      },
+      "agent_b_result": {
+        "content": "Low confidence response from agent_b",
+        "confidence": 0.2,
+        "token_usage": 1169,
+        "reasoning": "Uncertain about this response"
+      }
+    },
+    {
+      "run_id": "ADAPTIVE_CB_stress_001",
+      "condition": "ADAPTIVE_CB",
+      "workload": "stress",
+      "task_completed": true,
+      "metrics": {
+        "agent_a_failures": 0,
+        "agent_b_failures": 0,
+        "circuit_trips": 0,
+        "recovery_attempts": 0,
+        "task_completed": true,
+        "total_turns": 2,
+        "total_token_usage": 1600
+      },
+      "cfr": {
+        "cfr_rate": 0.0,
+        "initial_failures": 0,
+        "cascaded_failures": 0,
+        "contained_failures": 0,
+        "total_tasks_with_failure": 0
+      },
+      "circuit_breaker_a": {
+        "RCon_consistency_rate": 1.0,
+        "RRob_failure_count": 1,
+        "RPre_predictability": 0.0,
+        "RSaf_recovery_attempts": 0,
+        "state": "REASONING_OPEN",
+        "consecutive_failures": 1,
+        "trip_log": [
+          {
+            "timestamp": 1773936081.785032,
+            "from": "REASONING_CLOSED",
+            "to": "REASONING_OPEN"
+          }
+        ],
+        "trip_count": 1
+      },
+      "circuit_breaker_b": {
+        "RCon_consistency_rate": 1.0,
+        "RRob_failure_count": 0,
+        "RPre_predictability": 0.6915580906657837,
+        "RSaf_recovery_attempts": 0,
+        "state": "REASONING_CLOSED",
+        "consecutive_failures": 0,
+        "trip_log": [],
+        "trip_count": 0
+      },
+      "timeline": [
+        {
+          "timestamp": 1773936081.7850099,
+          "turn_number": 0,
+          "event_type": "task_start",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "workload": "stress"
+            }
+          }
+        },
+        {
+          "timestamp": 1773936081.7850099,
+          "turn_number": 1,
+          "event_type": "agent_call",
+          "agent_id": "agent_a",
+          "details": {
+            "turn": 1
+          }
+        },
+        {
+          "timestamp": 1773936081.785033,
+          "turn_number": 1,
+          "event_type": "agent_success",
+          "agent_id": "agent_a",
+          "details": {
+            "confidence": 0.2,
+            "tokens": 848
+          }
+        },
+        {
+          "timestamp": 1773936081.785034,
+          "turn_number": 2,
+          "event_type": "agent_call",
+          "agent_id": "agent_b",
+          "details": {
+            "turn": 2
+          }
+        },
+        {
+          "timestamp": 1773936081.7850602,
+          "turn_number": 2,
+          "event_type": "agent_success",
+          "agent_id": "agent_b",
+          "details": {
+            "confidence": 0.747792053055562,
+            "tokens": 752
+          }
+        },
+        {
+          "timestamp": 1773936081.7850611,
+          "turn_number": 2,
+          "event_type": "task_complete",
+          "agent_id": null,
+          "details": {
+            "details": {
+              "success": true
+            }
+          }
+        }
+      ],
+      "agent_a_result": {
+        "content": "Low confidence response from agent_a",
+        "confidence": 0.2,
+        "token_usage": 848,
+        "reasoning": "Uncertain about this response"
+      },
+      "agent_b_result": {
+        "content": "Final routing recommendation based on Agent A analysis, with contingency planning for alternative paths.",
+        "confidence": 0.747792053055562,
+        "token_usage": 752,
+        "reasoning": "Processed request successfully in agent_b"
+      }
+    }
+  ],
+  "avg_cfr": 0.0,
+  "completion_rate": 1.0,
+  "total_token_usage": 4268,
+  "avg_token_usage_per_run": 2134.0,
+  "total_recovery_attempts": 0,
+  "total_circuit_trips": 0,
+  "protection_activation_rate": 0.0,
+  "elapsed_seconds": 0.00029397010803222656,
+  "config": {
+    "workload": "stress",
+    "runs": 2,
+    "condition": "ADAPTIVE_CB",
+    "seed": 200,
+    "turn_budget": 25,
+    "verbose": false
+  }
+}
