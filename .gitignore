@@ -21,6 +21,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.venv
+.venv/*
 
 # Experimental files - keep locally but exclude from repo
 *.bak
@@ -75,3 +77,6 @@ results/exp-*
 
 # Development directories
 workloads/
+*.env
+empirical_validation/.env
+

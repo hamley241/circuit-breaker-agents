@@ -1,0 +1,2 @@
+cb_type,injection,runs,upstream_failure_rate,cascade_rate,final_success_rate,avg_breaker_trip_count
+no_cb,none,20,0.0,0.0,1.0,0.0
