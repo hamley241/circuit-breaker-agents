@@ -4,55 +4,22 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Theoretical Framework}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Observation.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Proposition.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Implication.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{3}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Simulation Setup}{3}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Real-World Setup}{3}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Simulation Results}{3}{section.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Simulation results across chain lengths 2--6. Baseline cascade failure rate increases with chain depth, while circuit breaker mechanisms substantially reduce propagation. Adaptive control achieves the lowest CFR in longer chains.}}{4}{figure.1}\protected@file@percent }
-\newlabel{fig:simulation}{{1}{4}{Simulation results across chain lengths 2--6. Baseline cascade failure rate increases with chain depth, while circuit breaker mechanisms substantially reduce propagation. Adaptive control achieves the lowest CFR in longer chains}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces CFR vs chain length}}{4}{figure.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Real-World API Validation}{4}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Setup}{4}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Results}{4}{subsection.5.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Real-world API results under moderate perturbation (inject rate = 0.2).}}{5}{table.1}\protected@file@percent }
-\newlabel{tab:real_results}{{1}{5}{Real-world API results under moderate perturbation (inject rate = 0.2)}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Real-world validation under moderate perturbation (inject rate = 0.2). Without protection, 62\% of upstream failures propagate to final failure. Both AI-based and adaptive circuit breakers eliminate cascade failures, while the AI-based circuit breaker achieves the highest end-to-end success rate in this setting.}}{5}{figure.2}\protected@file@percent }
-\newlabel{fig:real}{{2}{5}{Real-world validation under moderate perturbation (inject rate = 0.2). Without protection, 62\% of upstream failures propagate to final failure. Both AI-based and adaptive circuit breakers eliminate cascade failures, while the AI-based circuit breaker achieves the highest end-to-end success rate in this setting}{figure.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Tradeoff Analysis}{6}{section.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Containment--intervention tradeoff. While both breaker variants eliminate cascade failures, adaptive policies trigger more frequently, resulting in lower end-to-end success than the static AI-based breaker.}}{6}{figure.3}\protected@file@percent }
-\newlabel{fig:tradeoff}{{3}{6}{Containment--intervention tradeoff. While both breaker variants eliminate cascade failures, adaptive policies trigger more frequently, resulting in lower end-to-end success than the static AI-based breaker}{figure.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{6}{section.7}\protected@file@percent }
-\citation{autogpt}
-\citation{babyagi}
-\citation{toolformer}
-\citation{react}
-\citation{cot}
-\citation{selfconsistency}
-\citation{rag}
-\citation{toolformer}
-\citation{pipelineerrors}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations}{7}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9}Future Work}{7}{section.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10}Related Work}{7}{section.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Multi-Agent and Compositional LLM Systems}{7}{subsection.10.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Reliability and Robustness in LLMs}{7}{subsection.10.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Error Propagation in Machine Learning Pipelines}{7}{subsection.10.3}\protected@file@percent }
-\citation{hystrix}
-\citation{nygard}
-\citation{hystrix}
-\citation{adaptivecontrol}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Real-world results}}{4}{table.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Real-world validation}}{5}{figure.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Tradeoff Analysis}{5}{section.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Containment vs intervention tradeoff}}{5}{figure.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{5}{section.7}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{references}
-\bibcite{adaptivecontrol}{1}
-\bibcite{rag}{2}
-\bibcite{babyagi}{3}
-\bibcite{hystrix}{4}
-\bibcite{nygard}{5}
-\bibcite{toolformer}{6}
-\bibcite{pipelineerrors}{7}
-\bibcite{autogpt}{8}
-\bibcite{selfconsistency}{9}
-\bibcite{cot}{10}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Fault Tolerance and Circuit Breakers in Distributed Systems}{8}{subsection.10.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}Adaptive Control and Dynamic Policies}{8}{subsection.10.5}\protected@file@percent }
-\bibcite{react}{11}
-\gdef \@abspage@last{9}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations}{6}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Future Work}{6}{section.9}\protected@file@percent }
+\gdef \@abspage@last{6}
