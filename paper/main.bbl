@@ -1,3 +1,49 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{babyagi}
+Yohei Nakajima.
+\newblock Babyagi: Task-driven autonomous agent.
+\newblock \url{https://github.com/yoheinakajima/babyagi}, 2023.
+\newblock Accessed: 2026-03.
+
+\bibitem{hystrix}
+{Netflix OSS}.
+\newblock Hystrix: Latency and fault tolerance for distributed systems.
+\newblock \url{https://github.com/Netflix/Hystrix}, 2012.
+\newblock Accessed: 2026-03.
+
+\bibitem{nygard}
+Michael Nygard.
+\newblock {\em Release It!: Design and Deploy Production-Ready Software}.
+\newblock Pragmatic Bookshelf, 2007.
+
+\bibitem{toolformer}
+Timo Schick, Jane Dwivedi-Yu, Roberto Dess{\`i}, et~al.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock {\em arXiv preprint arXiv:2302.04761}, 2023.
+
+\bibitem{sculley2015hidden}
+D.~Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips, Dietmar
+  Ebner, Vinay Chaudhary, Michael Young, Jean-Francois Crespo, and Dan
+  Dennison.
+\newblock Hidden technical debt in machine learning systems.
+\newblock In {\em NIPS Workshop on Machine Learning Systems}, 2015.
+
+\bibitem{autogpt}
+{Significant Gravitas}.
+\newblock Autogpt: An autonomous gpt-4 experiment.
+\newblock \url{https://github.com/Significant-Gravitas/AutoGPT}, 2023.
+\newblock Accessed: 2026-03.
+
+\bibitem{wang2022selfconsistency}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, et~al.
+\newblock Self-consistency improves chain of thought reasoning in language
+  models.
+\newblock {\em arXiv preprint arXiv:2203.11171}, 2022.
+
+\bibitem{react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, et~al.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock {\em arXiv preprint arXiv:2210.03629}, 2022.
 
 \end{thebibliography}

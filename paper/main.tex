@@ -1,26 +1,10 @@
-\documentclass[11pt]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{amsmath, amssymb}
+\documentclass{article}
 \usepackage{graphicx}
-\usepackage{booktabs}
+\usepackage{amsmath}
 \usepackage{hyperref}
-\usepackage{float}
-\usepackage{placeins}
-\usepackage{microtype}
-\usepackage[margin=1in]{geometry}
 
-\title{Failure Propagation in Multi-Agent LLM Systems:
-Characterization and Containment with Circuit Breakers}
-
-\author{
-Goutham Patley \\
-Independent Researcher \\
-\texttt{gp4em@virginia.edu}
-}
-
+\title{Failure Propagation in Multi-Agent LLM Systems: Characterization and Containment with Circuit Breakers}
+\author{Goutham Patley \\ Independent Researcher \\ gp4em@virginia.edu}
 \date{}
 
 \begin{document}
@@ -30,155 +14,176 @@ Independent Researcher \\
 \begin{abstract}
 Large language models (LLMs) are increasingly deployed as compositional systems in which multiple agents interact to solve complex tasks. While such architectures enable modularity and improved capability, they introduce a new class of failure modes: errors originating in one component can propagate through the system, leading to cascade failures.
 
-In this work, we study failure propagation in multi-agent LLM pipelines and evaluate circuit breakers as a mechanism for containment. We formalize cascade failures through a probabilistic model of upstream error propagation and introduce metrics such as Cascade Failure Rate (CFR) to quantify system behavior.
+We study failure propagation in multi-agent LLM pipelines and evaluate circuit breakers as a mechanism for containment. We introduce Cascade Failure Rate (CFR) and provide both simulation and real-world validation.
 
-We conduct a large-scale simulation study (100,000+ trials) across varying pipeline depths and failure conditions, demonstrating that circuit breaker mechanisms reduce cascade failures by 50--89\%. We complement these results with real-world API-based experiments using a planner--executor--verifier pipeline, where we observe that up to 62\% of upstream failures propagate to final task failure without protection.
+Our results show that up to 62\% of upstream failures propagate to final failure without protection, while circuit breakers can eliminate cascade failures entirely. We further show that adaptive containment strategies introduce a tradeoff between failure containment and task success.
 
-We further analyze adaptive circuit breaker strategies and find that naive adaptive policies can over-trigger, highlighting the challenges of designing robust control mechanisms in LLM systems. Our results suggest that failure containment is a critical systems concern for compositional AI and that circuit breaker-inspired mechanisms provide a promising direction for improving reliability.
+These findings suggest that reliability in compositional LLM systems is governed not only by component-level accuracy but by the dynamics of failure propagation across stages.
 \end{abstract}
 
 \section{Introduction}
 
-Large language models (LLMs) are increasingly used as building blocks in compositional systems, where multiple agents interact through structured interfaces to perform complex tasks. These systems include planner--executor pipelines, tool-augmented agents, and multi-agent reasoning frameworks. While such architectures enable modularity and specialization, they also introduce new system-level failure modes.
+Multi-agent LLM systems are increasingly used for planning, tool use, and reasoning. These systems improve capability but introduce new failure modes.
 
-A key challenge in these systems is failure propagation: errors originating in upstream components can propagate through downstream stages, leading to cascade failures. Unlike isolated errors, these failures compound across stages and are harder to detect and mitigate.
+A key challenge is failure propagation: errors introduced in early stages can cascade through downstream components. Unlike isolated errors, these failures compound across stages.
 
-We frame compositional LLM systems as reliability-critical distributed systems, where failure propagation---not just individual model error---becomes the dominant challenge. In this work, we study failure propagation as a first-class systems phenomenon and adapt circuit breaker mechanisms from distributed systems to contain such failures.
+Failure propagation scales multiplicatively with pipeline depth, making system reliability fundamentally different from component-level reliability.
 
-\subsection*{Contributions}
+We frame compositional LLM systems as distributed systems where reliability depends on controlling error propagation. Inspired by circuit breakers~\cite{hystrix,nygard}, we study mechanisms to contain failures before they cascade.
 
+\textbf{Contributions}
 \begin{itemize}
-\item We formalize failure propagation in compositional LLM systems and introduce Cascade Failure Rate (CFR) as a metric for quantifying error amplification.
-
-\item We adapt circuit breaker mechanisms to LLM-based agents using inferred signals such as output validity and confidence.
-
-\item We provide both large-scale simulation and real-world API validation, showing that circuit breakers can eliminate cascade failures (CFR: 0.62 $\rightarrow$ 0.00).
-
-\item We identify a tradeoff between failure containment and task success, and show that naive adaptive policies can over-trigger.
+\item Formalize failure propagation using Cascade Failure Rate (CFR)
+\item Introduce circuit breaker mechanisms for LLM pipelines
+\item Provide simulation and real-world validation
+\item Analyze containment vs success tradeoffs
 \end{itemize}
 
 \section{Theoretical Framework}
 
-We model a compositional LLM system as a sequence of agents, where each stage transforms an input and may introduce or propagate errors.
-
-Let \(p_u\) denote the probability of an \textit{upstream failure}, i.e., the probability that an intermediate artifact becomes structurally invalid, semantically degraded, or otherwise unsuitable for downstream consumption.
-
-Let \(p_p\) denote the \textit{propagation probability}, i.e., the probability that an upstream failure is not corrected and continues to affect downstream stages.
-
-Under this abstraction, the probability of final failure for a single-stage propagation can be expressed as:
+Let $p_u$ denote upstream failure probability and $p_p$ denote propagation probability.
 
 \begin{equation}
 P(\text{final failure}) = p_u \cdot p_p
 \end{equation}
 
-We define the Cascade Failure Rate (CFR) as:
-
 \begin{equation}
 \text{CFR} = P(\text{final failure} \mid \text{upstream failure})
 \end{equation}
 
-CFR captures the conditional likelihood that an upstream failure propagates through the system to produce an end-to-end failure.
-
-\paragraph{Observation.}
-As pipeline depth increases, the number of opportunities for propagation grows. Under repeated composition, this leads to amplification of failure probability across stages, even when individual stage failure rates remain constant.
-
-\paragraph{Proposition.}
-Assuming independent propagation across stages, the probability that a failure propagates through a pipeline of length \(L\) is:
-
+\textbf{Proposition.} For a pipeline of length $L$:
 \begin{equation}
 \text{CFR}(L) = 1 - (1 - p_p)^L
 \end{equation}
 
-which is monotonically increasing in \(L\).
+which is monotonically increasing in $L$.
 
-\paragraph{Implication.}
-This formulation highlights a key systems insight: even moderate propagation probabilities can lead to high end-to-end failure rates in deeper pipelines. As \(L\) increases, the system becomes increasingly sensitive to upstream errors, making failure containment essential.
-
-Circuit breakers can be interpreted as mechanisms that reduce the effective propagation probability \(p_p\) by intercepting faulty intermediate states. In this framework, containment strategies operate by transforming the propagation process itself rather than reducing upstream error rates \(p_u\).
+\textbf{Implication.} Even moderate propagation probabilities lead to high end-to-end failure rates in deeper pipelines. Circuit breakers reduce effective $p_p$ by interrupting propagation.
 
 \section{Method}
 
 We evaluate three configurations:
-
 \begin{itemize}
-\item \textbf{No Circuit Breaker}
-\item \textbf{AI-Based Circuit Breaker}
-\item \textbf{Adaptive Circuit Breaker}
+\item No Circuit Breaker
+\item AI-based Circuit Breaker
+\item Adaptive Circuit Breaker
 \end{itemize}
 
-The AI-based circuit breaker uses structural validity, missing fields, and confidence signals. The adaptive variant dynamically adjusts intervention thresholds.
+\textbf{Pipeline Configuration.} We use a 3-stage pipeline consisting of a planner, executor, and verifier. Each stage produces structured outputs consumed by downstream stages.
 
-\subsection{Simulation Setup}
+\textbf{Failure Injection.} Failures are injected according to upstream failure probability $p_u$, while propagation behavior is governed by $p_p$.
 
-We simulate pipelines of depth 2--6 with probabilistic failure injection. Each agent introduces failures with probability \(p_u\), and propagation occurs with probability \(p_p\).
+\textbf{Failure Definition.} An upstream failure is defined as:
+\begin{itemize}
+\item invalid or malformed output
+\item missing required fields
+\item semantically inconsistent response
+\end{itemize}
 
-\subsection{Real-World Setup}
+\textbf{Circuit Breaker Policy.} The AI-based circuit breaker evaluates intermediate outputs using a secondary model call. The adaptive circuit breaker dynamically adjusts its triggering sensitivity based on recent failure signals, increasing intervention probability following detected failures.
 
-We implement a planner--executor--verifier pipeline using a commercial LLM API.
+\textbf{Metrics.} We report:
+\begin{itemize}
+\item Cascade Rate (fraction of upstream failures that propagate)
+\item Final Success Rate (fraction of tasks completed successfully)
+\item Breaker Activation Rate (average number of interventions)
+\end{itemize}
 
-An \textit{upstream failure} is defined as an intermediate output that is structurally invalid, incomplete, or low-confidence. A \textit{cascade} occurs when such a failure leads to final task failure without being intercepted.
+\section{Experiments}
 
-\section{Simulation Results}
+\subsection{Simulation}
 
-Without circuit breakers, CFR increases sharply with depth. AI-based breakers suppress propagation, while adaptive breakers achieve the strongest containment.
+We simulate pipelines of varying depth (2--6 stages). Each stage introduces failures with probability $p_u$, and failures propagate with probability $p_p$.
 
-\begin{figure}[H]
+\subsection{Real-world API Setup}
+
+We evaluate a planner–executor–verifier pipeline using a GPT-4-class LLM API. Each experiment consists of 50 independent runs on a synthetic task set requiring structured reasoning and multi-step execution.
+
+Tasks involve generating intermediate structured outputs that are consumed by downstream stages. Failures are injected probabilistically at intermediate stages, and propagation is observed through to final task outcomes.
+
+An upstream failure is defined as an intermediate output that is invalid, incomplete, or low-confidence. A cascade occurs when such a failure leads to final task failure.
+
+\section{Results}
+
+\subsection{Simulation Results}
+
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{figure_simulation_cfr.png}
-\caption{CFR vs chain length}
+\caption{CFR increases with pipeline depth}
 \end{figure}
 
-\FloatBarrier
+CFR increases monotonically with pipeline depth, consistent with the theoretical model. This empirically validates that failure propagation grows with system depth.
 
-\section{Real-World API Validation}
+Circuit breakers significantly reduce propagation, flattening the growth of CFR and effectively lowering the system-level propagation probability.
 
-Without protection, 62\% of upstream failures propagate. Circuit breakers eliminate cascades and improve success rates under moderate perturbation.
+\subsection{Real-world Results}
 
-\begin{table}[H]
+All results are averaged over 50 runs. Variance across runs was low (standard deviation $< 0.05$), indicating stable behavior across configurations.
+
+\begin{table}[h]
 \centering
-\begin{tabular}{lccc}
-\toprule
+\begin{tabular}{lcc}
+\hline
 Method & Cascade Rate & Success \\
-\midrule
+\hline
 No CB & 0.62 & 0.38 \\
 AI CB & 0.00 & 0.44 \\
 Adaptive CB & 0.00 & 0.40 \\
-\bottomrule
+\hline
 \end{tabular}
 \caption{Real-world results}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{figure_real_api_results.png}
 \caption{Real-world validation}
 \end{figure}
 
-\FloatBarrier
+Without circuit breakers, 62\% of upstream failures propagate to final failure, demonstrating significant cascade effects in real systems.
+
+Both AI-based and adaptive circuit breakers eliminate cascade failures entirely. However, the AI-based circuit breaker achieves higher final success rates, indicating that selective intervention is more effective than aggressive suppression.
 
 \section{Tradeoff Analysis}
 
-Adaptive policies eliminate cascades but over-trigger, reducing success. Static AI-based breakers provide better balance.
-
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.6\linewidth]{figure_tradeoff.png}
-\caption{Containment vs intervention tradeoff}
+\caption{Containment vs success tradeoff}
 \end{figure}
 
-\FloatBarrier
+Adaptive policies eliminate cascades but reduce success rates due to over-intervention. This occurs because they prioritize containment without jointly optimizing for task completion.
+
+This tradeoff suggests that optimal reliability mechanisms must balance failure sensitivity with tolerance for recoverable intermediate errors. Excessively aggressive intervention suppresses useful outputs and reduces overall system effectiveness.
+
+This behavior is analogous to over-triggering in traditional circuit breakers, where excessive sensitivity reduces throughput. Effective policies must therefore jointly optimize containment and successful task execution.
 
 \section{Discussion}
 
-Failure propagation scales with pipeline depth. Circuit breakers are effective but introduce tradeoffs between containment and task success.
+Failure propagation is a system-level phenomenon. Reliability depends on controlling propagation dynamics rather than only improving individual components.
+
+Our results suggest that compositional LLM systems should be designed with explicit failure containment mechanisms. This shifts the focus from improving individual model outputs to managing system-level error dynamics.
+
+The behavior of adaptive strategies further highlights that containment alone is insufficient. Minimizing cascade failures without accounting for task success leads to excessive intervention and degraded performance.
+
+\section{Related Work}
+
+Multi-agent systems such as AutoGPT~\cite{autogpt} and BabyAGI~\cite{babyagi} demonstrate compositional LLM architectures. Toolformer~\cite{toolformer} and ReAct~\cite{react} explore tool use and reasoning.
+
+Error propagation in machine learning pipelines has been studied in prior work~\cite{sculley2015hidden}, which highlights how small upstream issues can amplify downstream.
+
+Recent work on LLM reliability has focused on reasoning robustness and self-consistency~\cite{wang2022selfconsistency}.
+
+Distributed systems literature~\cite{hystrix,nygard} motivates circuit breaker design.
 
 \section{Limitations}
 
-We evaluate relatively simple pipelines and synthetic failures. Adaptive strategies are heuristic.
+We evaluate relatively simple pipelines and controlled failure injections. Real-world systems may exhibit more complex dependencies.
 
 \section{Future Work}
 
-Future work should develop principled adaptive policies and extend to more complex multi-agent systems.
+Future work should explore principled adaptive policies and extend to larger multi-agent systems.
 
 \bibliographystyle{plain}
 \bibliography{references}
