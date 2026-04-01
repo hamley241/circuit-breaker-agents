@@ -1,0 +1,60 @@
+\begin{thebibliography}{10}
+
+\bibitem{adaptivecontrol}
+Karl~Johan \AA~str{\"o}m and Bj{\"o}rn Wittenmark.
+\newblock {\em Adaptive Control: Stability, Convergence, and Robustness}.
+\newblock Addison-Wesley, 1995.
+
+\bibitem{autogpt}
+Significant Gravitas.
+\newblock Autogpt: An autonomous gpt-4 experiment.
+\newblock \url{https://github.com/Significant-Gravitas/AutoGPT}, 2023.
+
+\bibitem{rag}
+Patrick Lewis et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive nlp tasks.
+\newblock {\em NeurIPS}, 2020.
+
+\bibitem{babyagi}
+Yohei Nakajima.
+\newblock Babyagi: Task-driven autonomous agent.
+\newblock \url{https://github.com/yoheinakajima/babyagi}, 2023.
+
+\bibitem{hystrix}
+{Netflix OSS}.
+\newblock Hystrix: Latency and fault tolerance for distributed systems.
+\newblock \url{https://github.com/Netflix/Hystrix}, 2012.
+
+\bibitem{nygard}
+Michael Nygard.
+\newblock {\em Release It!: Design and Deploy Production-Ready Software}.
+\newblock Pragmatic Bookshelf, 2007.
+
+\bibitem{toolformer}
+Timo Schick et~al.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock {\em arXiv preprint arXiv:2302.04761}, 2023.
+
+\bibitem{pipelineerrors}
+D.~Sculley et~al.
+\newblock Understanding error propagation in machine learning pipelines.
+\newblock {\em NIPS Workshop}, 2015.
+
+\bibitem{selfconsistency}
+Xuezhi Wang et~al.
+\newblock Self-consistency improves chain of thought reasoning in language
+  models.
+\newblock {\em arXiv preprint arXiv:2203.11171}, 2022.
+
+\bibitem{cot}
+Jason Wei et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language
+  models.
+\newblock {\em arXiv preprint arXiv:2201.11903}, 2022.
+
+\bibitem{react}
+Shunyu Yao et~al.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock {\em arXiv preprint arXiv:2210.03629}, 2022.
+
+\end{thebibliography}
