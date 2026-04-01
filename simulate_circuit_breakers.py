@@ -2,24 +2,29 @@
 """
 simulate_circuit_breakers.py
 
-A simple simulation for LLM circuit breakers with:
+LLM circuit breaker simulation with:
 - intrinsic failure probability: p_u
 - propagation probability: p_p
 - imperfect fallback success after trip: p_f
+- fallback degradation under load:
+      p_f_effective = max(0, p_f - alpha * p_p)
 
 Modes:
 - no_cb
 - ai_cb
 - adaptive_cb
 
-Goal:
-Create a realistic tradeoff where adaptive_cb can achieve:
-- lower catastrophic failure rate (CFR)
-- but also lower success rate
-because it trips more aggressively and fallback is imperfect.
+Outputs:
+- success rate
+- safe failure rate
+- catastrophic failure rate (CFR)
+- trip rate
+- utility
 
 Example:
-    python simulate_circuit_breakers.py --runs 5000
+    python simulate_circuit_breakers.py --runs 10000
+    python simulate_circuit_breakers.py --runs 10000 --p-f 0.7 --fallback-degradation-alpha 0.2
+    python simulate_circuit_breakers.py --runs 10000 --csv-out results.csv
 """
 
 from __future__ import annotations
@@ -58,6 +63,7 @@ class RunResult:
     risky_issue_rate: float
     utility: float
 
+
 @dataclass
 class Counts:
     success: int = 0
@@ -84,7 +90,7 @@ class CircuitBreakerSimulation:
        - with probability (1 - p_p), it is recoverable
     3. The breaker sees a noisy score, not ground truth.
     4. If breaker trips:
-       - fallback succeeds with probability p_f
+       - fallback succeeds with probability p_f_effective
        - otherwise safe_fail
     5. If breaker does not trip:
        - risky issue -> catastrophic_fail
@@ -108,10 +114,12 @@ class CircuitBreakerSimulation:
         adaptive_base_threshold: float,
         adaptive_gamma: float,
         ai_threshold: float,
+        fallback_degradation_alpha: float,
     ) -> None:
         self.rng = random.Random(seed)
 
         self.p_f = p_f
+        self.fallback_degradation_alpha = fallback_degradation_alpha
         self.recoverable_continue_success = recoverable_continue_success
 
         self.healthy_score_mean = healthy_score_mean
@@ -157,6 +165,15 @@ class CircuitBreakerSimulation:
         threshold = self.adaptive_policy.base_threshold - self.adaptive_policy.adapt_gamma * p_p
         return max(0.0, min(1.0, threshold))
 
+    def get_effective_fallback_success(self, p_p: float) -> float:
+        """
+        Fallback quality degrades as propagation risk rises.
+
+        effective_p_f = max(0, min(1, p_f - alpha * p_p))
+        """
+        effective_p_f = self.p_f - self.fallback_degradation_alpha * p_p
+        return max(0.0, min(1.0, effective_p_f))
+
     def should_trip(self, mode: str, score: float, p_p: float) -> bool:
         if mode == "no_cb":
             return False
@@ -187,7 +204,8 @@ class CircuitBreakerSimulation:
         trip = self.should_trip(mode, score, p_p)
 
         if trip:
-            if self.rng.random() < self.p_f:
+            effective_p_f = self.get_effective_fallback_success(p_p)
+            if self.rng.random() < effective_p_f:
                 return "success", True, issue_type
             return "safe_fail", True, issue_type
 
@@ -229,24 +247,38 @@ class CircuitBreakerSimulation:
                 counts.catastrophic_fail += 1
             else:
                 raise ValueError(f"Unknown outcome: {outcome}")
+
         success_rate = counts.success / runs
         safe_fail_rate = counts.safe_fail / runs
         catastrophic_fail_rate = counts.catastrophic_fail / runs
-        utility = (1.0 * success_rate + 0.0 * safe_fail_rate - 5.0 * catastrophic_fail_rate)
+        trip_rate = counts.trips / runs
+        upstream_issue_rate = counts.upstream_issues / runs
+        recoverable_issue_rate = counts.recoverable_issues / runs
+        risky_issue_rate = counts.risky_issues / runs
+
+        # Simple expected utility:
+        #   success = +1
+        #   safe_fail = 0
+        #   catastrophic_fail = -5
+        utility = (
+            1.0 * success_rate
+            + 0.0 * safe_fail_rate
+            - 5.0 * catastrophic_fail_rate
+        )
 
         return RunResult(
             mode=mode,
             p_u=p_u,
             p_p=p_p,
             runs=runs,
-            success_rate=counts.success / runs,
-            safe_fail_rate=counts.safe_fail / runs,
-            catastrophic_fail_rate=counts.catastrophic_fail / runs,
-            trip_rate=counts.trips / runs,
-            upstream_issue_rate=counts.upstream_issues / runs,
-            recoverable_issue_rate=counts.recoverable_issues / runs,
-            risky_issue_rate=counts.risky_issues / runs,
-            utility = utility #(1.0 * success_rate + 0.0 * safe_fail_rate - 5.0 * catastrophic_fail_rate)
+            success_rate=success_rate,
+            safe_fail_rate=safe_fail_rate,
+            catastrophic_fail_rate=catastrophic_fail_rate,
+            trip_rate=trip_rate,
+            upstream_issue_rate=upstream_issue_rate,
+            recoverable_issue_rate=recoverable_issue_rate,
+            risky_issue_rate=risky_issue_rate,
+            utility=utility,
         )
 
 
@@ -266,18 +298,16 @@ def print_result_line(result: RunResult) -> None:
         f"success={result.success_rate:.4f} "
         f"safe_fail={result.safe_fail_rate:.4f} "
         f"cfr={result.catastrophic_fail_rate:.4f} "
-        f"trips={result.trip_rate:.4f}"
+        f"trips={result.trip_rate:.4f} "
+        f"utility={result.utility:.4f}"
     )
 
 
-def print_summary_table(results: List[RunResult]) -> None:
-    print("\n=== Summary ===")
-    for r in results:
-        print_result_line(r)
-
-
 def write_csv(path: str, results: List[RunResult]) -> None:
-    fieldnames = list(asdict(results[0]).keys()) if results else []
+    if not results:
+        return
+
+    fieldnames = list(asdict(results[0]).keys())
     with open(path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -310,12 +340,18 @@ def parse_args() -> argparse.Namespace:
         help="Propagation probability sweep.",
     )
 
-    # Trip cost / fallback quality
     parser.add_argument(
         "--p-f",
         type=float,
         default=0.65,
-        help="Fallback success probability after a trip.",
+        help="Base fallback success probability after a trip.",
+    )
+
+    parser.add_argument(
+        "--fallback-degradation-alpha",
+        type=float,
+        default=0.0,
+        help="How much fallback success degrades as propagation probability rises.",
     )
 
     parser.add_argument(
@@ -325,13 +361,11 @@ def parse_args() -> argparse.Namespace:
         help="Success probability if a recoverable issue continues without a trip.",
     )
 
-    # Score model
     parser.add_argument("--healthy-score-mean", type=float, default=0.20)
     parser.add_argument("--recoverable-score-mean", type=float, default=0.58)
     parser.add_argument("--risky-score-mean", type=float, default=0.82)
     parser.add_argument("--score-std", type=float, default=0.12)
 
-    # Policy thresholds
     parser.add_argument(
         "--ai-threshold",
         type=float,
@@ -381,6 +415,7 @@ def main() -> None:
         adaptive_base_threshold=args.adaptive_base_threshold,
         adaptive_gamma=args.adaptive_gamma,
         ai_threshold=args.ai_threshold,
+        fallback_degradation_alpha=args.fallback_degradation_alpha,
     )
 
     results: List[RunResult] = []
@@ -391,6 +426,7 @@ def main() -> None:
         f"runs={args.runs} "
         f"p_u={args.p_u:.2f} "
         f"p_f={args.p_f:.2f} "
+        f"fallback_degradation_alpha={args.fallback_degradation_alpha:.2f} "
         f"recoverable_continue_success={args.recoverable_continue_success:.2f}"
     )
     print(
@@ -417,7 +453,7 @@ def main() -> None:
         write_csv(args.csv_out, results)
         print(f"Wrote CSV: {args.csv_out}")
 
-    # Highlight pairwise comparison between ai_cb and adaptive_cb
+    # Pairwise comparison between ai_cb and adaptive_cb
     print("\n=== ai_cb vs adaptive_cb tradeoff check ===")
     ai_by_pp: Dict[float, RunResult] = {r.p_p: r for r in results if r.mode == "ai_cb"}
     ad_by_pp: Dict[float, RunResult] = {r.p_p: r for r in results if r.mode == "adaptive_cb"}
@@ -427,16 +463,20 @@ def main() -> None:
         ad = ad_by_pp[p_p]
         delta_success = ad.success_rate - ai.success_rate
         delta_cfr = ad.catastrophic_fail_rate - ai.catastrophic_fail_rate
+        delta_utility = ad.utility - ai.utility
+
         print(
             f"p_p={p_p:.2f} "
             f"adaptive-success-minus-ai={delta_success:+.4f} "
-            f"adaptive-cfr-minus-ai={delta_cfr:+.4f}"
+            f"adaptive-cfr-minus-ai={delta_cfr:+.4f} "
+            f"adaptive-utility-minus-ai={delta_utility:+.4f}"
         )
 
     print("\nInterpretation:")
     print("- Negative adaptive-success-minus-ai => adaptive has lower success.")
     print("- Negative adaptive-cfr-minus-ai => adaptive has lower CFR.")
-    print("- The desired tradeoff is both values negative at the same p_p.")
+    print("- Positive adaptive-utility-minus-ai => adaptive has higher expected utility.")
+    print("- Desired tradeoff region: success delta < 0 and CFR delta < 0.")
 
 
 if __name__ == "__main__":
