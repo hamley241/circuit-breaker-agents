@@ -62,7 +62,7 @@ This paper makes the following contributions:
 
 We model a compositional LLM system as a sequence of agents, where each stage transforms an input and may introduce or propagate errors.
 
-Let $p_u$ denote the probability of an upstream failure, that is, the probability that an intermediate artifact becomes structurally invalid, semantically degraded, or otherwise unusable by downstream agents. Let $p_p$ denote the probability that such an upstream failure propagates to later stages rather than being absorbed or corrected.
+Let \(p_u\) denote the probability of an upstream failure, that is, the probability that an intermediate artifact becomes structurally invalid, semantically degraded, or otherwise unusable by downstream agents. Let \(p_p\) denote the probability that such an upstream failure propagates to later stages rather than being absorbed or corrected.
 
 Under this abstraction, the probability of final failure can be expressed as:
 
@@ -76,7 +76,7 @@ We define Cascade Failure Rate (CFR) as:
 \text{CFR} = P(\text{final failure} \mid \text{upstream failure})
 \end{equation}
 
-CFR captures the likelihood that an upstream error propagates through the system. As pipeline depth increases, the likelihood of error amplification grows due to repeated propagation across stages. Circuit breakers reduce CFR by intercepting faulty states and preventing further propagation, effectively reducing the propagation probability $p_p$.
+CFR captures the likelihood that an upstream error propagates through the system. As pipeline depth increases, the likelihood of error amplification grows due to repeated propagation across stages. Circuit breakers reduce CFR by intercepting faulty states and preventing further propagation, effectively reducing the propagation probability \(p_p\).
 
 \section{Method}
 
@@ -92,13 +92,15 @@ We evaluate failure propagation and containment in a multi-agent pipeline under 
 
 \subsection{Simulation Setup}
 
-We simulate multi-agent pipelines of varying depths (2--6 stages) with probabilistic failure injection. Each agent introduces upstream failures with probability $p_u$, and propagation occurs with probability $p_p$. We run over 100,000 trials across configurations to estimate Cascade Failure Rate (CFR).
+We simulate multi-agent pipelines of varying depths (2--6 stages) with probabilistic failure injection. Each agent introduces upstream failures with probability \(p_u\), and propagation occurs with probability \(p_p\). We run over 100,000 trials across configurations to estimate Cascade Failure Rate (CFR).
 
 \subsection{Real-World Setup}
 
 We implement a planner--executor--verifier pipeline using a commercial LLM API. The planner produces a structured intermediate artifact, the executor generates a candidate answer conditioned on that artifact, and the verifier evaluates correctness relative to a reference answer.
 
 Failures are injected via controlled perturbations of planner outputs at a fixed rate. In particular, we use graded corruption of intermediate artifacts, including mild, moderate, and severe structural degradation. The reported real-world results are based on 50 runs per configuration under a moderate perturbation regime with inject rate 0.2.
+
+In the real-world evaluation, we count an \emph{upstream failure} when the planner or executor produces an output that is structurally invalid, incomplete, low-confidence, or otherwise unsuitable for reliable downstream use. We count a \emph{cascade} when such an upstream failure leads to final task failure without being successfully blocked or contained by the circuit breaker.
 
 For each configuration, we record upstream failure rate, cascade rate, final success rate, and average breaker trip count.
 
@@ -114,9 +116,9 @@ The adaptive circuit breaker achieves the strongest containment, reducing CFR co
 
 These results demonstrate that failure propagation scales with compositional depth and that circuit breaker mechanisms provide effective containment.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=0.82\linewidth]{figure_simulation_cfr.png}
+\includegraphics[width=0.7\linewidth]{figure_simulation_cfr.png}
 \caption{Simulation results across chain lengths 2--6. Baseline cascade failure rate increases with chain depth, while circuit breaker mechanisms substantially reduce propagation. Adaptive control achieves the lowest CFR in longer chains.}
 \label{fig:simulation}
 \end{figure}
@@ -143,7 +145,7 @@ The adaptive circuit breaker also eliminates cascade failures but achieves a sli
 
 These results highlight a key tradeoff: while aggressive containment eliminates cascades, it may also reduce task completion due to false positives.
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \caption{Real-world API results under moderate perturbation (inject rate = 0.2).}
 \label{tab:real_results}
@@ -158,9 +160,9 @@ Adaptive CB & 0.70 & 0.00 & 0.40 & 0.60 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=0.82\linewidth]{figure_real_api_results.png}
+\includegraphics[width=0.7\linewidth]{figure_real_api_results.png}
 \caption{Real-world validation under moderate perturbation (inject rate = 0.2). Without protection, 62\% of upstream failures propagate to final failure. Both AI-based and adaptive circuit breakers eliminate cascade failures, while the AI-based circuit breaker achieves the highest end-to-end success rate in this setting.}
 \label{fig:real}
 \end{figure}
@@ -173,9 +175,9 @@ Both AI-based and adaptive circuit breakers eliminate cascade failures in this r
 
 By contrast, the static AI-based breaker achieves a better balance: it maintains zero cascade failures while preserving a higher end-to-end success rate. This result highlights that containment quality alone is not sufficient; intervention efficiency also matters.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=0.68\linewidth]{figure_tradeoff.png}
+\includegraphics[width=0.6\linewidth]{figure_tradeoff.png}
 \caption{Containment--intervention tradeoff. While both breaker variants eliminate cascade failures, adaptive policies trigger more frequently, resulting in lower end-to-end success than the static AI-based breaker.}
 \label{fig:tradeoff}
 \end{figure}
