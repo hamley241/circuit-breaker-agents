@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  31 MAR 2026 18:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  31 MAR 2026 19:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -316,14 +316,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
 \Hy@SectionHShift=\skip54
-) (/usr/local/texlive/2026/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip55
-\enit@outerparindent=\dimen177
-\enit@toks=\toks25
-\enit@inbox=\box55
-\enit@count@id=\count311
-\enitdp@description=\count312
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count311
+\float@exts=\toks25
+\float@box=\box55
+\@float@everytoks=\toks26
+\@floatcapt=\box56
 )
 (/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
@@ -331,18 +330,18 @@ Package: geometry 2026/03/07 v6.0 Page Geometry
 (/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count313
-\Gm@cntv=\count314
-\c@Gm@tempcnt=\count315
-\Gm@bindingoffset=\dimen178
-\Gm@wd@mp=\dimen179
-\Gm@odd@mp=\dimen180
-\Gm@even@mp=\dimen181
-\Gm@layoutwidth=\dimen182
-\Gm@layoutheight=\dimen183
-\Gm@layouthoffset=\dimen184
-\Gm@layoutvoffset=\dimen185
-\Gm@dimlist=\toks26
+\Gm@cnth=\count312
+\Gm@cntv=\count313
+\c@Gm@tempcnt=\count314
+\Gm@bindingoffset=\dimen177
+\Gm@wd@mp=\dimen178
+\Gm@odd@mp=\dimen179
+\Gm@even@mp=\dimen180
+\Gm@layoutwidth=\dimen181
+\Gm@layoutheight=\dimen182
+\Gm@layouthoffset=\dimen183
+\Gm@layoutvoffset=\dimen184
+\Gm@dimlist=\toks27
 )
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 23
 .
@@ -352,7 +351,7 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 (/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count316
+\l__color_backend_stack_int=\count315
 )
 (./main.aux)
 \openout1 = `main.aux'.
@@ -378,17 +377,17 @@ LaTeX Font Info:    ... okay on input line 23.
 
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count317
-\scratchdimen=\dimen186
-\scratchbox=\box56
-\nofMPsegments=\count318
-\nofMParguments=\count319
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count320
-\MPscratchDim=\dimen187
-\MPnumerator=\count321
-\makeMPintoPDFobject=\count322
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count316
+\scratchdimen=\dimen185
+\scratchbox=\box57
+\nofMPsegments=\count317
+\nofMParguments=\count318
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count319
+\MPscratchDim=\dimen186
+\MPnumerator=\count320
+\makeMPintoPDFobject=\count321
+\everyMPtoPDFconversion=\toks29
 ) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -490,13 +489,13 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-1.
+2.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 55.
+(Font)              <10.95> on input line 56.
  [2{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/loca
 l/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/
 2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2026/texmf
@@ -504,22 +503,45 @@ l/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/
 <figure_simulation_cfr.png, id=104, 578.16pt x 361.35pt>
 File: figure_simulation_cfr.png Graphic file (type png)
 <use figure_simulation_cfr.png>
-Package pdftex.def Info: figure_simulation_cfr.png  used on input line 110.
+Package pdftex.def Info: figure_simulation_cfr.png  used on input line 119.
 (pdftex.def)             Requested size: 385.20255pt x 240.75238pt.
- [3]
-<figure_real_api_results.png, id=112, 578.16pt x 361.35pt>
+ [3] [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.159 \end{table}
+                  <./figure_simulation_cfr.png>]
+<figure_real_api_results.png, id=118, 578.16pt x 361.35pt>
 File: figure_real_api_results.png Graphic file (type png)
 <use figure_real_api_results.png>
-Package pdftex.def Info: figure_real_api_results.png  used on input line 139.
+Package pdftex.def Info: figure_real_api_results.png  used on input line 163.
 (pdftex.def)             Requested size: 385.20255pt x 240.75238pt.
-<figure_tradeoff.png, id=114, 433.62pt x 361.35pt>
+<figure_tradeoff.png, id=120, 433.62pt x 361.35pt>
 File: figure_tradeoff.png Graphic file (type png)
 <use figure_tradeoff.png>
-Package pdftex.def Info: figure_tradeoff.png  used on input line 154.
+Package pdftex.def Info: figure_tradeoff.png  used on input line 178.
 (pdftex.def)             Requested size: 319.42996pt x 266.20384pt.
- [4 <./figure_simulation_cfr.png>] [5 <./figure_real_api_results.png>] [6 <./fi
-gure_tradeoff.png>] (./main.bbl [7]
-Underfull \hbox (badness 1769) in paragraph at lines 19--22
+ [5
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.182 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.182 
+       <./figure_real_api_results.png>] [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.199 \section
+              {Future Work} <./figure_tradeoff.png>] [7] (./main.bbl
+Underfull \hbox (badness 1769) in paragraph at lines 15--19
 []\T1/lmr/m/n/10.95 Yohei Naka-jima.  Babyagi: Task-driven au-tonomous agent.  
 []$\T1/lmtt/m/n/10.95 https : / / github . com /
  []
@@ -533,13 +555,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 1927B5081CD047082A6850590D6B30BA;3088.
  ) 
 Here is how much of TeX's memory you used:
- 11073 strings out of 467525
- 168653 string characters out of 5418982
- 586913 words of memory out of 5000000
- 39777 multiletter control sequences out of 15000+600000
+ 10818 strings out of 467525
+ 164122 string characters out of 5418982
+ 580598 words of memory out of 5000000
+ 39521 multiletter control sequences out of 15000+600000
  683287 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,619b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,619b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2026/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2026/tex
@@ -550,10 +572,10 @@ blic/lm/lmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr
 sr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/t
 exlive/2026/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/202
 6/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (8 pages, 330793 bytes).
+Output written on main.pdf (8 pages, 331888 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 202 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 203 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
  168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

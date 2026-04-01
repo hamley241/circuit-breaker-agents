@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{hyperref}
-\usepackage{enumitem}
+\usepackage{float}
 \usepackage[margin=1in]{geometry}
 
 \title{Failure Propagation in Multi-Agent LLM Systems: Characterization and Containment with Circuit Breakers}
@@ -44,10 +44,11 @@ Despite the growing adoption of multi-agent LLM systems, failure propagation rem
 
 We frame compositional LLM systems as reliability-critical distributed systems, where failure propagation---not just individual model error---becomes the dominant challenge. In this work, we study failure propagation as a first-class systems phenomenon in compositional LLM pipelines. We draw inspiration from distributed systems, where circuit breakers are used to prevent cascading failures by halting requests to failing components. We adapt this concept to LLM-based agents and evaluate its effectiveness in both simulated and real-world settings.
 
-\paragraph{Contributions}
+\subsection*{Contributions}
+
 This paper makes the following contributions:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 \item We formalize failure propagation in compositional LLM systems and introduce Cascade Failure Rate (CFR) as a metric for quantifying error amplification across agent pipelines.
 
 \item We adapt circuit breaker mechanisms from distributed systems to LLM-based agents, using inferred signals such as output validity and confidence to detect and contain failures.
@@ -61,7 +62,9 @@ This paper makes the following contributions:
 
 We model a compositional LLM system as a sequence of agents, where each stage transforms an input and may introduce or propagate errors.
 
-Let $p_u$ denote the probability of an upstream failure and $p_p$ denote the probability that a failure propagates to downstream components. The probability of final failure can be expressed as:
+Let $p_u$ denote the probability of an upstream failure, that is, the probability that an intermediate artifact becomes structurally invalid, semantically degraded, or otherwise unusable by downstream agents. Let $p_p$ denote the probability that such an upstream failure propagates to later stages rather than being absorbed or corrected.
+
+Under this abstraction, the probability of final failure can be expressed as:
 
 \begin{equation}
 P(\text{final failure}) = p_u \times p_p
@@ -79,9 +82,11 @@ CFR captures the likelihood that an upstream error propagates through the system
 
 We evaluate failure propagation and containment in a multi-agent pipeline under three configurations:
 
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
 \item \textbf{No Circuit Breaker}: Agents execute sequentially without intervention, allowing errors to propagate freely.
-\item \textbf{AI-Based Circuit Breaker}: Each stage evaluates upstream outputs using structural and confidence-based signals (e.g., JSON validity, completeness, and confidence scores). If a failure is detected, execution is halted or fallback logic is triggered.
+
+\item \textbf{AI-Based Circuit Breaker}: Each stage evaluates upstream outputs using structural and confidence-based signals, including malformed intermediate artifacts, missing required fields, incomplete planner outputs, and low-confidence downstream outputs. If a failure signal is detected, execution is halted or fallback logic is triggered.
+
 \item \textbf{Adaptive Circuit Breaker}: The intervention threshold is dynamically adjusted based on observed failure patterns and recent system behavior, allowing more aggressive containment under high-error conditions.
 \end{itemize}
 
@@ -91,7 +96,11 @@ We simulate multi-agent pipelines of varying depths (2--6 stages) with probabili
 
 \subsection{Real-World Setup}
 
-We implement a planner--executor--verifier pipeline using real LLM APIs. Failures are injected via controlled perturbations of planner outputs at a fixed rate, including structured corruption of intermediate artifacts. Each configuration is evaluated across multiple runs, and metrics such as upstream failure rate, cascade rate, final success rate, and breaker activation rate are recorded.
+We implement a planner--executor--verifier pipeline using a commercial LLM API. The planner produces a structured intermediate artifact, the executor generates a candidate answer conditioned on that artifact, and the verifier evaluates correctness relative to a reference answer.
+
+Failures are injected via controlled perturbations of planner outputs at a fixed rate. In particular, we use graded corruption of intermediate artifacts, including mild, moderate, and severe structural degradation. The reported real-world results are based on 50 runs per configuration under a moderate perturbation regime with inject rate 0.2.
+
+For each configuration, we record upstream failure rate, cascade rate, final success rate, and average breaker trip count.
 
 \section{Simulation Results}
 
@@ -105,10 +114,10 @@ The adaptive circuit breaker achieves the strongest containment, reducing CFR co
 
 These results demonstrate that failure propagation scales with compositional depth and that circuit breaker mechanisms provide effective containment.
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.82\linewidth]{figure_simulation_cfr.png}
-\caption{Simulation results across chain lengths 2--6. Baseline cascade failure rate increases with chain depth, indicating compounding error propagation. Circuit breaker mechanisms substantially reduce cascade failures, with adaptive strategies achieving the lowest propagation rates in longer chains.}
+\caption{Simulation results across chain lengths 2--6. Baseline cascade failure rate increases with chain depth, while circuit breaker mechanisms substantially reduce propagation. Adaptive control achieves the lowest CFR in longer chains.}
 \label{fig:simulation}
 \end{figure}
 
@@ -116,11 +125,11 @@ These results demonstrate that failure propagation scales with compositional dep
 
 \subsection{Setup}
 
-We implement a three-agent pipeline consisting of a planner, executor, and verifier using a commercial LLM API. Each task consists of a question with a known reference answer. The planner produces a structured plan, the executor generates an answer, and the verifier evaluates correctness.
+We evaluate the same failure-containment idea in a real API-based multi-agent system. The experimental pipeline consists of three stages: planner, executor, and verifier. Each task includes an input question and a known reference answer.
 
-To simulate realistic failure conditions, we inject perturbations into the planner output with a specified probability. We use a graded corruption mechanism that introduces mild, moderate, and severe perturbations to mimic degradation in upstream outputs.
+To simulate realistic upstream degradation, we inject perturbations into the planner output with a fixed probability. These perturbations corrupt intermediate artifacts before they are consumed by downstream agents, thereby creating conditions under which propagation can occur.
 
-We evaluate three configurations: no circuit breaker, AI-based circuit breaker, and adaptive circuit breaker.
+We compare three configurations: no circuit breaker, AI-based circuit breaker, and adaptive circuit breaker.
 
 \subsection{Results}
 
@@ -134,10 +143,25 @@ The adaptive circuit breaker also eliminates cascade failures but achieves a sli
 
 These results highlight a key tradeoff: while aggressive containment eliminates cascades, it may also reduce task completion due to false positives.
 
-\begin{figure}[t]
+\begin{table}[H]
+\centering
+\caption{Real-world API results under moderate perturbation (inject rate = 0.2).}
+\label{tab:real_results}
+\begin{tabular}{lcccc}
+\toprule
+Method & Upstream Failure & Cascade Rate & Final Success & Avg Trips \\
+\midrule
+No CB & 0.74 & 0.62 & 0.38 & 0.00 \\
+AI CB & 0.68 & 0.00 & 0.44 & 0.56 \\
+Adaptive CB & 0.70 & 0.00 & 0.40 & 0.60 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.82\linewidth]{figure_real_api_results.png}
-\caption{Real-world validation under moderate perturbation (inject rate = 0.2). Without protection, 62\% of upstream failures propagate to final failure. Both AI-based and adaptive circuit breakers eliminate cascade failures (CFR = 0.0). The AI-based circuit breaker achieves the highest end-to-end success rate in this setting.}
+\caption{Real-world validation under moderate perturbation (inject rate = 0.2). Without protection, 62\% of upstream failures propagate to final failure. Both AI-based and adaptive circuit breakers eliminate cascade failures, while the AI-based circuit breaker achieves the highest end-to-end success rate in this setting.}
 \label{fig:real}
 \end{figure}
 
@@ -149,10 +173,10 @@ Both AI-based and adaptive circuit breakers eliminate cascade failures in this r
 
 By contrast, the static AI-based breaker achieves a better balance: it maintains zero cascade failures while preserving a higher end-to-end success rate. This result highlights that containment quality alone is not sufficient; intervention efficiency also matters.
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.68\linewidth]{figure_tradeoff.png}
-\caption{Containment--intervention tradeoff. While both circuit breaker variants eliminate cascade failures, adaptive policies trigger more frequently, resulting in lower end-to-end success compared to the static AI-based breaker. This highlights the challenge of designing efficient adaptive control mechanisms.}
+\caption{Containment--intervention tradeoff. While both breaker variants eliminate cascade failures, adaptive policies trigger more frequently, resulting in lower end-to-end success than the static AI-based breaker.}
 \label{fig:tradeoff}
 \end{figure}
 
