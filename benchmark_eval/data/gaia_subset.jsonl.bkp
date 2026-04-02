@@ -1,0 +1,3 @@
+{"task_id":"sample-001","question":"What is 12 multiplied by 7? Return just the number.","reference_answer":"84","metadata":{"level":"sample","notes":"Replace with real benchmark data."}}
+{"task_id":"sample-002","question":"Sort these names alphabetically and return them comma-separated: Zoe, Alice, Bob.","reference_answer":"Alice, Bob, Zoe","metadata":{"level":"sample","notes":"Replace with real benchmark data."}}
+{"task_id":"sample-003","question":"A planner proposes two subtasks: fetch data, verify result. Return the exact phrase: fetch data -> verify result","reference_answer":"fetch data -> verify result","metadata":{"level":"sample","notes":"Replace with real benchmark data."}}

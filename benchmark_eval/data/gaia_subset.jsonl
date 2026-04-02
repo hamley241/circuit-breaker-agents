@@ -1,0 +1,25 @@
+{"task_id":"gaia_001","question":"A store sells apples for $2 each. If you buy 3 apples and get a 20% discount on the total, what is the final price?","reference_answer":"4.8"}
+{"task_id":"gaia_002","question":"John is 5 years older than Mary. Mary is 25. What is John's age?","reference_answer":"30"}
+{"task_id":"gaia_003","question":"A train travels 60 miles in 1 hour. How far does it travel in 2.5 hours?","reference_answer":"150"}
+{"task_id":"gaia_004","question":"Return the result as a JSON object with key 'result'. What is 7 * 8?","reference_answer":"{\"result\":56}"}
+{"task_id":"gaia_005","question":"If a rectangle has length 10 and width 4, what is its area?","reference_answer":"40"}
+{"task_id":"gaia_006","question":"A book costs $15. If you buy 2 books and pay 10% tax on the total, what is the final amount?","reference_answer":"33"}
+{"task_id":"gaia_007","question":"Return ONLY a number. What is the square of 12?","reference_answer":"144"}
+{"task_id":"gaia_008","question":"If Alice has 3 times as many apples as Bob, and Bob has 4 apples, how many apples does Alice have?","reference_answer":"12"}
+{"task_id":"gaia_009","question":"Return a JSON object with key 'answer'. What is 100 divided by 4?","reference_answer":"{\"answer\":25}"}
+{"task_id":"gaia_010","question":"A car travels at 50 mph for 3 hours. What distance does it cover?","reference_answer":"150"}
+{"task_id":"gaia_011","question":"If x = 5, what is 2x + 3?","reference_answer":"13"}
+{"task_id":"gaia_012","question":"Return ONLY the number. What is 9 squared minus 5?","reference_answer":"76"}
+{"task_id":"gaia_013","question":"A pizza is cut into 8 slices. If you eat 3 slices, how many remain?","reference_answer":"5"}
+{"task_id":"gaia_014","question":"Return JSON with key 'value'. What is 6 + 7 * 2?","reference_answer":"{\"value\":20}"}
+{"task_id":"gaia_015","question":"If a worker earns $20 per hour and works 8 hours, what is total pay?","reference_answer":"160"}
+{"task_id":"gaia_016","question":"Return ONLY a number. What is 15% of 200?","reference_answer":"30"}
+{"task_id":"gaia_017","question":"If a number is doubled and then increased by 3 to get 11, what is the original number?","reference_answer":"4"}
+{"task_id":"gaia_018","question":"Return JSON with key 'result'. What is 9 * 9?","reference_answer":"{\"result\":81}"}
+{"task_id":"gaia_019","question":"A tank holds 100 liters. If 30 liters are removed, how much remains?","reference_answer":"70"}
+{"task_id":"gaia_020","question":"Return ONLY the number. What is 144 divided by 12?","reference_answer":"12"}
+{"task_id":"gaia_021","question":"If you buy 5 items at $3 each, what is the total cost?","reference_answer":"15"}
+{"task_id":"gaia_022","question":"Return JSON with key 'answer'. What is 8 + 5?","reference_answer":"{\"answer\":13}"}
+{"task_id":"gaia_023","question":"If a sequence increases by 3 each time starting from 2, what is the 5th term?","reference_answer":"14"}
+{"task_id":"gaia_024","question":"Return ONLY a number. What is 11 * 11?","reference_answer":"121"}
+{"task_id":"gaia_025","question":"If a discount of 25% is applied to $80, what is the final price?","reference_answer":"60"}
