@@ -6,3 +6,4 @@ Return strict JSON only:
   "verdict": "accept or reject",
   "issues": ["fallback verifier engaged"]
 }
+"final_answer" must contain only the answer value itself — a number, word, or JSON value. Do not include any explanation, reasoning, units, symbols, or working. Return only the bare value.

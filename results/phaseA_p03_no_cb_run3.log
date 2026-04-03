@@ -1,0 +1,2 @@
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/phaseA_p03_no_cb_run3.jsonl
