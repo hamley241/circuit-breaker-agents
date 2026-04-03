@@ -1,0 +1,2 @@
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/rerun_p03_ai_cb_run1.jsonl
