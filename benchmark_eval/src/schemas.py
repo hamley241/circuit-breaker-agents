@@ -40,6 +40,7 @@ class RunTrace(BaseModel):
     final_success: bool = False
     cascade: bool = False
     execution_mode: str = 'state_locked'
+    pipeline_variant: str = 'three_stage'
     fault_type: str = 'none'
     upstream_corrupted: bool = False
     fault_variant: str = ''

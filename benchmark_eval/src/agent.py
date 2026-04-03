@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import random
+import re
 from typing import Any, Dict, List
 
 from .breaker import AdaptiveBreaker, StaticBreaker
@@ -203,8 +204,36 @@ class BenchmarkAgentRunner:
             )
         return handoff, ''
 
-    def execute_task(self, task: TaskRecord, policy: str, rolling_risk: float = 0.0, execution_mode: str = 'state_locked', fault_type: str = 'none', inject_rate: float = 0.0) -> RunTrace:
-        trace = RunTrace(task_id=task.task_id, policy=policy, execution_mode=execution_mode, fault_type=fault_type)
+    @staticmethod
+    def _normalize_executor_answer(candidate_answer: str) -> str:
+        cleaned = (candidate_answer or '').strip()
+        if not cleaned:
+            return ''
+        cleaned = re.sub(r'[*_`]', '', cleaned).strip()
+        cleaned = re.sub(r'^(final answer|answer)\s*:\s*', '', cleaned, flags=re.IGNORECASE).strip()
+
+        lines = [line.strip() for line in cleaned.splitlines() if line.strip()]
+        if lines:
+            cleaned = lines[-1]
+
+        trailing_literal = re.search(r'([+-]?\d+(?:\.\d+)?|[A-Za-z]{1,12})\s*$', cleaned)
+        if trailing_literal:
+            prefix = cleaned[: trailing_literal.start()].rstrip(' :;,-')
+            if not prefix or prefix.lower().endswith(('is', 'was', 'are', 'equals', 'answer')):
+                return trailing_literal.group(1)
+        return cleaned
+
+    def execute_task(
+        self,
+        task: TaskRecord,
+        policy: str,
+        rolling_risk: float = 0.0,
+        execution_mode: str = 'state_locked',
+        pipeline_variant: str = 'three_stage',
+        fault_type: str = 'none',
+        inject_rate: float = 0.0,
+    ) -> RunTrace:
+        trace = RunTrace(task_id=task.task_id, policy=policy, execution_mode=execution_mode, pipeline_variant=pipeline_variant, fault_type=fault_type)
         prior_failures = 0
 
         planner_output = self._run_stage('planner', task, payload={'question': task.question}, fallback=False)
@@ -273,6 +302,12 @@ class BenchmarkAgentRunner:
             )
             if not executor_check.valid:
                 prior_failures += 1
+
+        if pipeline_variant == 'two_stage':
+            trace.final_answer = self._normalize_executor_answer(str(executor_payload.get('candidate_answer', '')))
+            if not trace.final_answer.strip():
+                trace.upstream_failure_seen = True
+            return trace
 
         if execution_mode == 'state_locked':
             verifier_payload_input = {
