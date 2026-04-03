@@ -1,0 +1,7 @@
+mode,policy,runs,success_rate_pct,cascade_rate_pct,cfr,cfr_injected,cfr_clean,lift,avg_trip_count,utility
+state_locked,No CB,125,87.2,12.8,0.3265,0.1818,0.0678,0.114,0.0,0.232
+state_locked,AI-guided,125,88.0,12.0,0.4286,0.0984,0.1406,-0.0423,0.24,0.28
+state_locked,Adaptive,125,86.4,13.6,0.5312,0.1912,0.0702,0.121,0.208,0.184
+free_recovery,No CB,125,80.0,1.6,0.069,0.0147,0.0175,-0.0028,0.0,0.72
+free_recovery,AI-guided,125,79.2,0.0,0.0,0.0,0.0,0.0,0.232,0.792
+free_recovery,Adaptive,125,73.6,0.0,0.0,0.0,0.0,0.0,0.232,0.736

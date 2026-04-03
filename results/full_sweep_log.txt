@@ -1,0 +1,206 @@
+===== Phase 1: no_cb baseline and sweeps =====
+=== Running state_locked_no_cb_baseline_v1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_no_cb_baseline_v1.jsonl
+=== Summarizing state_locked_no_cb_baseline_v1 ===
+Wrote summary CSV to results/state_locked_no_cb_baseline_v1.csv
+Wrote LaTeX table to results/state_locked_no_cb_baseline_v1.tex
+=== Injection stats for state_locked_no_cb_baseline_v1 ===
+0
+=== Conditional counts for state_locked_no_cb_baseline_v1 ===
+{
+  "runs": 25,
+  "corrupted": 0,
+  "cascades": 3,
+  "corrupted_and_cascade": 0
+}
+=== Cascade count for state_locked_no_cb_baseline_v1 ===
+       3
+=== CSV for state_locked_no_cb_baseline_v1 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.880000,0.400000,0.300000,0.000000,0.000000,0.280000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+=== Running state_locked_no_cb_semantic_v2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_no_cb_semantic_v2.jsonl
+=== Summarizing state_locked_no_cb_semantic_v2 ===
+Wrote summary CSV to results/state_locked_no_cb_semantic_v2.csv
+Wrote LaTeX table to results/state_locked_no_cb_semantic_v2.tex
+=== Injection stats for state_locked_no_cb_semantic_v2 ===
+0.2
+=== Conditional counts for state_locked_no_cb_semantic_v2 ===
+{
+  "runs": 25,
+  "corrupted": 5,
+  "cascades": 6,
+  "corrupted_and_cascade": 2
+}
+=== Cascade count for state_locked_no_cb_semantic_v2 ===
+       6
+=== CSV for state_locked_no_cb_semantic_v2 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.760000,0.600000,0.400000,0.000000,0.000000,-0.440000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+=== Running state_locked_no_cb_semantic_v3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_no_cb_semantic_v3.jsonl
+=== Summarizing state_locked_no_cb_semantic_v3 ===
+Wrote summary CSV to results/state_locked_no_cb_semantic_v3.csv
+Wrote LaTeX table to results/state_locked_no_cb_semantic_v3.tex
+=== Injection stats for state_locked_no_cb_semantic_v3 ===
+0.6
+=== Conditional counts for state_locked_no_cb_semantic_v3 ===
+{
+  "runs": 25,
+  "corrupted": 15,
+  "cascades": 5,
+  "corrupted_and_cascade": 3
+}
+=== Cascade count for state_locked_no_cb_semantic_v3 ===
+       5
+=== CSV for state_locked_no_cb_semantic_v3 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.800000,0.360000,0.555556,0.000000,0.000000,-0.200000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+=== Running state_locked_no_cb_structural_v2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_no_cb_structural_v2.jsonl
+=== Summarizing state_locked_no_cb_structural_v2 ===
+Wrote summary CSV to results/state_locked_no_cb_structural_v2.csv
+Wrote LaTeX table to results/state_locked_no_cb_structural_v2.tex
+=== Injection stats for state_locked_no_cb_structural_v2 ===
+0.12
+=== Conditional counts for state_locked_no_cb_structural_v2 ===
+{
+  "runs": 25,
+  "corrupted": 3,
+  "cascades": 7,
+  "corrupted_and_cascade": 2
+}
+=== Cascade count for state_locked_no_cb_structural_v2 ===
+       7
+=== CSV for state_locked_no_cb_structural_v2 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.720000,0.480000,0.583333,0.000000,0.000000,-0.680000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+=== Running state_locked_no_cb_structural_v3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_no_cb_structural_v3.jsonl
+=== Summarizing state_locked_no_cb_structural_v3 ===
+Wrote summary CSV to results/state_locked_no_cb_structural_v3.csv
+Wrote LaTeX table to results/state_locked_no_cb_structural_v3.tex
+=== Injection stats for state_locked_no_cb_structural_v3 ===
+0.48
+=== Conditional counts for state_locked_no_cb_structural_v3 ===
+{
+  "runs": 25,
+  "corrupted": 12,
+  "cascades": 3,
+  "corrupted_and_cascade": 1
+}
+=== Cascade count for state_locked_no_cb_structural_v3 ===
+       3
+=== CSV for state_locked_no_cb_structural_v3 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.880000,0.360000,0.333333,0.000000,0.000000,0.280000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+===== Phase 2: CB comparison on most informative regime (semantic 0.5) =====
+=== Running state_locked_ai_cb_semantic_v3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_ai_cb_semantic_v3.jsonl
+=== Summarizing state_locked_ai_cb_semantic_v3 ===
+Wrote summary CSV to results/state_locked_ai_cb_semantic_v3.csv
+Wrote LaTeX table to results/state_locked_ai_cb_semantic_v3.tex
+=== Injection stats for state_locked_ai_cb_semantic_v3 ===
+0.68
+=== Conditional counts for state_locked_ai_cb_semantic_v3 ===
+{
+  "runs": 25,
+  "corrupted": 17,
+  "cascades": 4,
+  "corrupted_and_cascade": 2
+}
+=== Cascade count for state_locked_ai_cb_semantic_v3 ===
+       4
+=== CSV for state_locked_ai_cb_semantic_v3 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,25,0.840000,0.320000,0.500000,0.000000,0.240000,0.040000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+=== Running state_locked_adaptive_cb_semantic_v3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/state_locked_adaptive_cb_semantic_v3.jsonl
+=== Summarizing state_locked_adaptive_cb_semantic_v3 ===
+Wrote summary CSV to results/state_locked_adaptive_cb_semantic_v3.csv
+Wrote LaTeX table to results/state_locked_adaptive_cb_semantic_v3.tex
+=== Injection stats for state_locked_adaptive_cb_semantic_v3 ===
+0.72
+=== Conditional counts for state_locked_adaptive_cb_semantic_v3 ===
+{
+  "runs": 25,
+  "corrupted": 18,
+  "cascades": 3,
+  "corrupted_and_cascade": 2
+}
+=== Cascade count for state_locked_adaptive_cb_semantic_v3 ===
+       3
+=== CSV for state_locked_adaptive_cb_semantic_v3 ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,25,0.880000,0.240000,0.500000,0.000000,0.240000,0.280000
+
+===== Final recap =====
+--- results/state_locked_no_cb_baseline_v1.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.880000,0.400000,0.300000,0.000000,0.000000,0.280000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+--- results/state_locked_no_cb_semantic_v2.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.760000,0.600000,0.400000,0.000000,0.000000,-0.440000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+--- results/state_locked_no_cb_semantic_v3.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.800000,0.360000,0.555556,0.000000,0.000000,-0.200000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+--- results/state_locked_no_cb_structural_v2.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.720000,0.480000,0.583333,0.000000,0.000000,-0.680000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+--- results/state_locked_no_cb_structural_v3.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,25,0.880000,0.360000,0.333333,0.000000,0.000000,0.280000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+--- results/state_locked_ai_cb_semantic_v3.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,25,0.840000,0.320000,0.500000,0.000000,0.240000,0.040000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+
+--- results/state_locked_adaptive_cb_semantic_v3.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,25,0.880000,0.240000,0.500000,0.000000,0.240000,0.280000
+

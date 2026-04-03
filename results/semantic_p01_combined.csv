@@ -1,0 +1,4 @@
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.832000,0.400000,0.420000,0.000000,0.000000,19,106,21,5,16,0.263158,0.150943,0.112214,-0.008000
+ai_cb,AI-guided CB,125,0.848000,0.272000,0.558824,0.000000,0.208000,15,110,19,1,18,0.066667,0.163636,-0.096970,0.088000
+adaptive_cb,Adaptive CB,125,0.824000,0.328000,0.536585,0.000000,0.224000,12,113,22,0,22,0.000000,0.194690,-0.194690,-0.056000

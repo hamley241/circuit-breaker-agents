@@ -1,0 +1,608 @@
+===== Phase 1: Per-run evaluations =====
+=== Running semantic_p01_no_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_no_cb_run1.jsonl
+=== Summarizing semantic_p01_no_cb_run1 ===
+Wrote summary CSV to results/semantic_p01_no_cb_run1.csv
+Wrote LaTeX table to results/semantic_p01_no_cb_run1.tex
+=== Running semantic_p01_no_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_no_cb_run2.jsonl
+=== Summarizing semantic_p01_no_cb_run2 ===
+Wrote summary CSV to results/semantic_p01_no_cb_run2.csv
+Wrote LaTeX table to results/semantic_p01_no_cb_run2.tex
+=== Running semantic_p01_no_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_no_cb_run3.jsonl
+=== Summarizing semantic_p01_no_cb_run3 ===
+Wrote summary CSV to results/semantic_p01_no_cb_run3.csv
+Wrote LaTeX table to results/semantic_p01_no_cb_run3.tex
+=== Running semantic_p01_no_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_no_cb_run4.jsonl
+=== Summarizing semantic_p01_no_cb_run4 ===
+Wrote summary CSV to results/semantic_p01_no_cb_run4.csv
+Wrote LaTeX table to results/semantic_p01_no_cb_run4.tex
+=== Running semantic_p01_no_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_no_cb_run5.jsonl
+=== Summarizing semantic_p01_no_cb_run5 ===
+Wrote summary CSV to results/semantic_p01_no_cb_run5.csv
+Wrote LaTeX table to results/semantic_p01_no_cb_run5.tex
+=== Running semantic_p01_ai_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_ai_cb_run1.jsonl
+=== Summarizing semantic_p01_ai_cb_run1 ===
+Wrote summary CSV to results/semantic_p01_ai_cb_run1.csv
+Wrote LaTeX table to results/semantic_p01_ai_cb_run1.tex
+=== Running semantic_p01_ai_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_ai_cb_run2.jsonl
+=== Summarizing semantic_p01_ai_cb_run2 ===
+Wrote summary CSV to results/semantic_p01_ai_cb_run2.csv
+Wrote LaTeX table to results/semantic_p01_ai_cb_run2.tex
+=== Running semantic_p01_ai_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_ai_cb_run3.jsonl
+=== Summarizing semantic_p01_ai_cb_run3 ===
+Wrote summary CSV to results/semantic_p01_ai_cb_run3.csv
+Wrote LaTeX table to results/semantic_p01_ai_cb_run3.tex
+=== Running semantic_p01_ai_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_ai_cb_run4.jsonl
+=== Summarizing semantic_p01_ai_cb_run4 ===
+Wrote summary CSV to results/semantic_p01_ai_cb_run4.csv
+Wrote LaTeX table to results/semantic_p01_ai_cb_run4.tex
+=== Running semantic_p01_ai_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_ai_cb_run5.jsonl
+=== Summarizing semantic_p01_ai_cb_run5 ===
+Wrote summary CSV to results/semantic_p01_ai_cb_run5.csv
+Wrote LaTeX table to results/semantic_p01_ai_cb_run5.tex
+=== Running semantic_p01_adaptive_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_adaptive_cb_run1.jsonl
+=== Summarizing semantic_p01_adaptive_cb_run1 ===
+Wrote summary CSV to results/semantic_p01_adaptive_cb_run1.csv
+Wrote LaTeX table to results/semantic_p01_adaptive_cb_run1.tex
+=== Running semantic_p01_adaptive_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_adaptive_cb_run2.jsonl
+=== Summarizing semantic_p01_adaptive_cb_run2 ===
+Wrote summary CSV to results/semantic_p01_adaptive_cb_run2.csv
+Wrote LaTeX table to results/semantic_p01_adaptive_cb_run2.tex
+=== Running semantic_p01_adaptive_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_adaptive_cb_run3.jsonl
+=== Summarizing semantic_p01_adaptive_cb_run3 ===
+Wrote summary CSV to results/semantic_p01_adaptive_cb_run3.csv
+Wrote LaTeX table to results/semantic_p01_adaptive_cb_run3.tex
+=== Running semantic_p01_adaptive_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_adaptive_cb_run4.jsonl
+=== Summarizing semantic_p01_adaptive_cb_run4 ===
+Wrote summary CSV to results/semantic_p01_adaptive_cb_run4.csv
+Wrote LaTeX table to results/semantic_p01_adaptive_cb_run4.tex
+=== Running semantic_p01_adaptive_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p01_adaptive_cb_run5.jsonl
+=== Summarizing semantic_p01_adaptive_cb_run5 ===
+Wrote summary CSV to results/semantic_p01_adaptive_cb_run5.csv
+Wrote LaTeX table to results/semantic_p01_adaptive_cb_run5.tex
+=== Running semantic_p03_no_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_no_cb_run1.jsonl
+=== Summarizing semantic_p03_no_cb_run1 ===
+Wrote summary CSV to results/semantic_p03_no_cb_run1.csv
+Wrote LaTeX table to results/semantic_p03_no_cb_run1.tex
+=== Running semantic_p03_no_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_no_cb_run2.jsonl
+=== Summarizing semantic_p03_no_cb_run2 ===
+Wrote summary CSV to results/semantic_p03_no_cb_run2.csv
+Wrote LaTeX table to results/semantic_p03_no_cb_run2.tex
+=== Running semantic_p03_no_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_no_cb_run3.jsonl
+=== Summarizing semantic_p03_no_cb_run3 ===
+Wrote summary CSV to results/semantic_p03_no_cb_run3.csv
+Wrote LaTeX table to results/semantic_p03_no_cb_run3.tex
+=== Running semantic_p03_no_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_no_cb_run4.jsonl
+=== Summarizing semantic_p03_no_cb_run4 ===
+Wrote summary CSV to results/semantic_p03_no_cb_run4.csv
+Wrote LaTeX table to results/semantic_p03_no_cb_run4.tex
+=== Running semantic_p03_no_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_no_cb_run5.jsonl
+=== Summarizing semantic_p03_no_cb_run5 ===
+Wrote summary CSV to results/semantic_p03_no_cb_run5.csv
+Wrote LaTeX table to results/semantic_p03_no_cb_run5.tex
+=== Running semantic_p03_ai_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_ai_cb_run1.jsonl
+=== Summarizing semantic_p03_ai_cb_run1 ===
+Wrote summary CSV to results/semantic_p03_ai_cb_run1.csv
+Wrote LaTeX table to results/semantic_p03_ai_cb_run1.tex
+=== Running semantic_p03_ai_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_ai_cb_run2.jsonl
+=== Summarizing semantic_p03_ai_cb_run2 ===
+Wrote summary CSV to results/semantic_p03_ai_cb_run2.csv
+Wrote LaTeX table to results/semantic_p03_ai_cb_run2.tex
+=== Running semantic_p03_ai_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_ai_cb_run3.jsonl
+=== Summarizing semantic_p03_ai_cb_run3 ===
+Wrote summary CSV to results/semantic_p03_ai_cb_run3.csv
+Wrote LaTeX table to results/semantic_p03_ai_cb_run3.tex
+=== Running semantic_p03_ai_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_ai_cb_run4.jsonl
+=== Summarizing semantic_p03_ai_cb_run4 ===
+Wrote summary CSV to results/semantic_p03_ai_cb_run4.csv
+Wrote LaTeX table to results/semantic_p03_ai_cb_run4.tex
+=== Running semantic_p03_ai_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_ai_cb_run5.jsonl
+=== Summarizing semantic_p03_ai_cb_run5 ===
+Wrote summary CSV to results/semantic_p03_ai_cb_run5.csv
+Wrote LaTeX table to results/semantic_p03_ai_cb_run5.tex
+=== Running semantic_p03_adaptive_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_adaptive_cb_run1.jsonl
+=== Summarizing semantic_p03_adaptive_cb_run1 ===
+Wrote summary CSV to results/semantic_p03_adaptive_cb_run1.csv
+Wrote LaTeX table to results/semantic_p03_adaptive_cb_run1.tex
+=== Running semantic_p03_adaptive_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_adaptive_cb_run2.jsonl
+=== Summarizing semantic_p03_adaptive_cb_run2 ===
+Wrote summary CSV to results/semantic_p03_adaptive_cb_run2.csv
+Wrote LaTeX table to results/semantic_p03_adaptive_cb_run2.tex
+=== Running semantic_p03_adaptive_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_adaptive_cb_run3.jsonl
+=== Summarizing semantic_p03_adaptive_cb_run3 ===
+Wrote summary CSV to results/semantic_p03_adaptive_cb_run3.csv
+Wrote LaTeX table to results/semantic_p03_adaptive_cb_run3.tex
+=== Running semantic_p03_adaptive_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_adaptive_cb_run4.jsonl
+=== Summarizing semantic_p03_adaptive_cb_run4 ===
+Wrote summary CSV to results/semantic_p03_adaptive_cb_run4.csv
+Wrote LaTeX table to results/semantic_p03_adaptive_cb_run4.tex
+=== Running semantic_p03_adaptive_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p03_adaptive_cb_run5.jsonl
+=== Summarizing semantic_p03_adaptive_cb_run5 ===
+Wrote summary CSV to results/semantic_p03_adaptive_cb_run5.csv
+Wrote LaTeX table to results/semantic_p03_adaptive_cb_run5.tex
+=== Running semantic_p05_no_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_no_cb_run1.jsonl
+=== Summarizing semantic_p05_no_cb_run1 ===
+Wrote summary CSV to results/semantic_p05_no_cb_run1.csv
+Wrote LaTeX table to results/semantic_p05_no_cb_run1.tex
+=== Running semantic_p05_no_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_no_cb_run2.jsonl
+=== Summarizing semantic_p05_no_cb_run2 ===
+Wrote summary CSV to results/semantic_p05_no_cb_run2.csv
+Wrote LaTeX table to results/semantic_p05_no_cb_run2.tex
+=== Running semantic_p05_no_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_no_cb_run3.jsonl
+=== Summarizing semantic_p05_no_cb_run3 ===
+Wrote summary CSV to results/semantic_p05_no_cb_run3.csv
+Wrote LaTeX table to results/semantic_p05_no_cb_run3.tex
+=== Running semantic_p05_no_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_no_cb_run4.jsonl
+=== Summarizing semantic_p05_no_cb_run4 ===
+Wrote summary CSV to results/semantic_p05_no_cb_run4.csv
+Wrote LaTeX table to results/semantic_p05_no_cb_run4.tex
+=== Running semantic_p05_no_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_no_cb_run5.jsonl
+=== Summarizing semantic_p05_no_cb_run5 ===
+Wrote summary CSV to results/semantic_p05_no_cb_run5.csv
+Wrote LaTeX table to results/semantic_p05_no_cb_run5.tex
+=== Running semantic_p05_ai_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_ai_cb_run1.jsonl
+=== Summarizing semantic_p05_ai_cb_run1 ===
+Wrote summary CSV to results/semantic_p05_ai_cb_run1.csv
+Wrote LaTeX table to results/semantic_p05_ai_cb_run1.tex
+=== Running semantic_p05_ai_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_ai_cb_run2.jsonl
+=== Summarizing semantic_p05_ai_cb_run2 ===
+Wrote summary CSV to results/semantic_p05_ai_cb_run2.csv
+Wrote LaTeX table to results/semantic_p05_ai_cb_run2.tex
+=== Running semantic_p05_ai_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_ai_cb_run3.jsonl
+=== Summarizing semantic_p05_ai_cb_run3 ===
+Wrote summary CSV to results/semantic_p05_ai_cb_run3.csv
+Wrote LaTeX table to results/semantic_p05_ai_cb_run3.tex
+=== Running semantic_p05_ai_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_ai_cb_run4.jsonl
+=== Summarizing semantic_p05_ai_cb_run4 ===
+Wrote summary CSV to results/semantic_p05_ai_cb_run4.csv
+Wrote LaTeX table to results/semantic_p05_ai_cb_run4.tex
+=== Running semantic_p05_ai_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_ai_cb_run5.jsonl
+=== Summarizing semantic_p05_ai_cb_run5 ===
+Wrote summary CSV to results/semantic_p05_ai_cb_run5.csv
+Wrote LaTeX table to results/semantic_p05_ai_cb_run5.tex
+=== Running semantic_p05_adaptive_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_adaptive_cb_run1.jsonl
+=== Summarizing semantic_p05_adaptive_cb_run1 ===
+Wrote summary CSV to results/semantic_p05_adaptive_cb_run1.csv
+Wrote LaTeX table to results/semantic_p05_adaptive_cb_run1.tex
+=== Running semantic_p05_adaptive_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_adaptive_cb_run2.jsonl
+=== Summarizing semantic_p05_adaptive_cb_run2 ===
+Wrote summary CSV to results/semantic_p05_adaptive_cb_run2.csv
+Wrote LaTeX table to results/semantic_p05_adaptive_cb_run2.tex
+=== Running semantic_p05_adaptive_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_adaptive_cb_run3.jsonl
+=== Summarizing semantic_p05_adaptive_cb_run3 ===
+Wrote summary CSV to results/semantic_p05_adaptive_cb_run3.csv
+Wrote LaTeX table to results/semantic_p05_adaptive_cb_run3.tex
+=== Running semantic_p05_adaptive_cb_run4 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_adaptive_cb_run4.jsonl
+=== Summarizing semantic_p05_adaptive_cb_run4 ===
+Wrote summary CSV to results/semantic_p05_adaptive_cb_run4.csv
+Wrote LaTeX table to results/semantic_p05_adaptive_cb_run4.tex
+=== Running semantic_p05_adaptive_cb_run5 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/semantic_p05_adaptive_cb_run5.jsonl
+=== Summarizing semantic_p05_adaptive_cb_run5 ===
+Wrote summary CSV to results/semantic_p05_adaptive_cb_run5.csv
+Wrote LaTeX table to results/semantic_p05_adaptive_cb_run5.tex
+===== Phase 2: Aggregate by policy x rate =====
+=== Aggregating semantic_p01_no_cb ===
+=== Summarizing aggregate semantic_p01_no_cb ===
+Wrote summary CSV to results/semantic_p01_no_cb_all.csv
+Wrote LaTeX table to results/semantic_p01_no_cb_all.tex
+=== Realized corruption rate: semantic_p01_no_cb ===
+0.152
+=== Conditional counts: semantic_p01_no_cb ===
+{
+  "runs": 125,
+  "corrupted": 19,
+  "clean": 106,
+  "cascades": 21,
+  "corrupted_and_cascade": 5,
+  "clean_and_cascade": 16
+}
+=== Trip selectivity via trip_count: semantic_p01_no_cb ===
+{
+  "p_trip_corrupted": 0,
+  "p_trip_clean": 0,
+  "selectivity_gap": 0
+}
+=== CSV: semantic_p01_no_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.832000,0.400000,0.420000,0.000000,0.000000,19,106,21,5,16,0.263158,0.150943,0.112214,-0.008000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating semantic_p01_ai_cb ===
+=== Summarizing aggregate semantic_p01_ai_cb ===
+Wrote summary CSV to results/semantic_p01_ai_cb_all.csv
+Wrote LaTeX table to results/semantic_p01_ai_cb_all.tex
+=== Realized corruption rate: semantic_p01_ai_cb ===
+0.12
+=== Conditional counts: semantic_p01_ai_cb ===
+{
+  "runs": 125,
+  "corrupted": 15,
+  "clean": 110,
+  "cascades": 19,
+  "corrupted_and_cascade": 1,
+  "clean_and_cascade": 18
+}
+=== Trip selectivity via trip_count: semantic_p01_ai_cb ===
+{
+  "p_trip_corrupted": 0.13333333333333333,
+  "p_trip_clean": 0.21818181818181817,
+  "selectivity_gap": -0.08484848484848484
+}
+=== CSV: semantic_p01_ai_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,125,0.848000,0.272000,0.558824,0.000000,0.208000,15,110,19,1,18,0.066667,0.163636,-0.096970,0.088000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating semantic_p01_adaptive_cb ===
+=== Summarizing aggregate semantic_p01_adaptive_cb ===
+Wrote summary CSV to results/semantic_p01_adaptive_cb_all.csv
+Wrote LaTeX table to results/semantic_p01_adaptive_cb_all.tex
+=== Realized corruption rate: semantic_p01_adaptive_cb ===
+0.096
+=== Conditional counts: semantic_p01_adaptive_cb ===
+{
+  "runs": 125,
+  "corrupted": 12,
+  "clean": 113,
+  "cascades": 22,
+  "corrupted_and_cascade": 0,
+  "clean_and_cascade": 22
+}
+=== Trip selectivity via trip_count: semantic_p01_adaptive_cb ===
+{
+  "p_trip_corrupted": 0.08333333333333333,
+  "p_trip_clean": 0.23893805309734514,
+  "selectivity_gap": -0.1556047197640118
+}
+=== CSV: semantic_p01_adaptive_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,125,0.824000,0.328000,0.536585,0.000000,0.224000,12,113,22,0,22,0.000000,0.194690,-0.194690,-0.056000
+
+=== Aggregating semantic_p03_no_cb ===
+=== Summarizing aggregate semantic_p03_no_cb ===
+Wrote summary CSV to results/semantic_p03_no_cb_all.csv
+Wrote LaTeX table to results/semantic_p03_no_cb_all.tex
+=== Realized corruption rate: semantic_p03_no_cb ===
+0.264
+=== Conditional counts: semantic_p03_no_cb ===
+{
+  "runs": 125,
+  "corrupted": 33,
+  "clean": 92,
+  "cascades": 19,
+  "corrupted_and_cascade": 6,
+  "clean_and_cascade": 13
+}
+=== Trip selectivity via trip_count: semantic_p03_no_cb ===
+{
+  "p_trip_corrupted": 0,
+  "p_trip_clean": 0,
+  "selectivity_gap": 0
+}
+=== CSV: semantic_p03_no_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.848000,0.408000,0.372549,0.000000,0.000000,33,92,19,6,13,0.181818,0.141304,0.040514,0.088000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating semantic_p03_ai_cb ===
+=== Summarizing aggregate semantic_p03_ai_cb ===
+Wrote summary CSV to results/semantic_p03_ai_cb_all.csv
+Wrote LaTeX table to results/semantic_p03_ai_cb_all.tex
+=== Realized corruption rate: semantic_p03_ai_cb ===
+0.224
+=== Conditional counts: semantic_p03_ai_cb ===
+{
+  "runs": 125,
+  "corrupted": 28,
+  "clean": 97,
+  "cascades": 26,
+  "corrupted_and_cascade": 3,
+  "clean_and_cascade": 23
+}
+=== Trip selectivity via trip_count: semantic_p03_ai_cb ===
+{
+  "p_trip_corrupted": 0.25,
+  "p_trip_clean": 0.16494845360824742,
+  "selectivity_gap": 0.08505154639175258
+}
+=== CSV: semantic_p03_ai_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,125,0.792000,0.272000,0.764706,0.000000,0.184000,28,97,26,3,23,0.107143,0.237113,-0.129971,-0.248000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating semantic_p03_adaptive_cb ===
+=== Summarizing aggregate semantic_p03_adaptive_cb ===
+Wrote summary CSV to results/semantic_p03_adaptive_cb_all.csv
+Wrote LaTeX table to results/semantic_p03_adaptive_cb_all.tex
+=== Realized corruption rate: semantic_p03_adaptive_cb ===
+0.296
+=== Conditional counts: semantic_p03_adaptive_cb ===
+{
+  "runs": 125,
+  "corrupted": 37,
+  "clean": 88,
+  "cascades": 21,
+  "corrupted_and_cascade": 4,
+  "clean_and_cascade": 17
+}
+=== Trip selectivity via trip_count: semantic_p03_adaptive_cb ===
+{
+  "p_trip_corrupted": 0.24324324324324326,
+  "p_trip_clean": 0.19318181818181818,
+  "selectivity_gap": 0.05006142506142508
+}
+=== CSV: semantic_p03_adaptive_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,125,0.832000,0.288000,0.583333,0.000000,0.208000,37,88,21,4,17,0.108108,0.193182,-0.085074,-0.008000
+
+=== Aggregating semantic_p05_no_cb ===
+=== Summarizing aggregate semantic_p05_no_cb ===
+Wrote summary CSV to results/semantic_p05_no_cb_all.csv
+Wrote LaTeX table to results/semantic_p05_no_cb_all.tex
+=== Realized corruption rate: semantic_p05_no_cb ===
+0.44
+=== Conditional counts: semantic_p05_no_cb ===
+{
+  "runs": 125,
+  "corrupted": 55,
+  "clean": 70,
+  "cascades": 26,
+  "corrupted_and_cascade": 13,
+  "clean_and_cascade": 13
+}
+=== Trip selectivity via trip_count: semantic_p05_no_cb ===
+{
+  "p_trip_corrupted": 0,
+  "p_trip_clean": 0,
+  "selectivity_gap": 0
+}
+=== CSV: semantic_p05_no_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.792000,0.472000,0.440678,0.000000,0.000000,55,70,26,13,13,0.236364,0.185714,0.050649,-0.248000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating semantic_p05_ai_cb ===
+=== Summarizing aggregate semantic_p05_ai_cb ===
+Wrote summary CSV to results/semantic_p05_ai_cb_all.csv
+Wrote LaTeX table to results/semantic_p05_ai_cb_all.tex
+=== Realized corruption rate: semantic_p05_ai_cb ===
+0.456
+=== Conditional counts: semantic_p05_ai_cb ===
+{
+  "runs": 125,
+  "corrupted": 57,
+  "clean": 68,
+  "cascades": 22,
+  "corrupted_and_cascade": 11,
+  "clean_and_cascade": 11
+}
+=== Trip selectivity via trip_count: semantic_p05_ai_cb ===
+{
+  "p_trip_corrupted": 0.22807017543859648,
+  "p_trip_clean": 0.16176470588235295,
+  "selectivity_gap": 0.06630546955624353
+}
+=== CSV: semantic_p05_ai_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,125,0.824000,0.296000,0.594595,0.000000,0.192000,57,68,22,11,11,0.192982,0.161765,0.031218,-0.056000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating semantic_p05_adaptive_cb ===
+=== Summarizing aggregate semantic_p05_adaptive_cb ===
+Wrote summary CSV to results/semantic_p05_adaptive_cb_all.csv
+Wrote LaTeX table to results/semantic_p05_adaptive_cb_all.tex
+=== Realized corruption rate: semantic_p05_adaptive_cb ===
+0.504
+=== Conditional counts: semantic_p05_adaptive_cb ===
+{
+  "runs": 125,
+  "corrupted": 63,
+  "clean": 62,
+  "cascades": 16,
+  "corrupted_and_cascade": 10,
+  "clean_and_cascade": 6
+}
+=== Trip selectivity via trip_count: semantic_p05_adaptive_cb ===
+{
+  "p_trip_corrupted": 0.2698412698412698,
+  "p_trip_clean": 0.16129032258064516,
+  "selectivity_gap": 0.10855094726062467
+}
+=== CSV: semantic_p05_adaptive_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,125,0.872000,0.248000,0.516129,0.000000,0.216000,63,62,16,10,6,0.158730,0.096774,0.061956,0.232000
+
+===== Phase 3: Selectivity significance tests =====
+=== Selectivity significance test: semantic_p01_no_cb ===
+{'trip_corrupted': 0, 'corrupted': 19, 'trip_clean': 0, 'clean': 106}
+{'p_trip_corrupted': 0.0, 'p_trip_clean': 0.0, 'selectivity_gap': 0.0, 'z': nan, 'p_value': nan}
+
+=== Selectivity significance test: semantic_p01_ai_cb ===
+{'trip_corrupted': 2, 'corrupted': 15, 'trip_clean': 24, 'clean': 110}
+{'p_trip_corrupted': 0.133333, 'p_trip_clean': 0.218182, 'selectivity_gap': -0.084848, 'z': -0.759516, 'p_value': 0.447544}
+
+=== Selectivity significance test: semantic_p01_adaptive_cb ===
+{'trip_corrupted': 1, 'corrupted': 12, 'trip_clean': 27, 'clean': 113}
+{'p_trip_corrupted': 0.083333, 'p_trip_clean': 0.238938, 'selectivity_gap': -0.155605, 'z': -1.229257, 'p_value': 0.218975}
+
+=== Selectivity significance test: semantic_p03_no_cb ===
+{'trip_corrupted': 0, 'corrupted': 33, 'trip_clean': 0, 'clean': 92}
+{'p_trip_corrupted': 0.0, 'p_trip_clean': 0.0, 'selectivity_gap': 0.0, 'z': nan, 'p_value': nan}
+
+=== Selectivity significance test: semantic_p03_ai_cb ===
+{'trip_corrupted': 7, 'corrupted': 28, 'trip_clean': 16, 'clean': 97}
+{'p_trip_corrupted': 0.25, 'p_trip_clean': 0.164948, 'selectivity_gap': 0.085052, 'z': 1.023147, 'p_value': 0.306238}
+
+=== Selectivity significance test: semantic_p03_adaptive_cb ===
+{'trip_corrupted': 9, 'corrupted': 37, 'trip_clean': 17, 'clean': 88}
+{'p_trip_corrupted': 0.243243, 'p_trip_clean': 0.193182, 'selectivity_gap': 0.050061, 'z': 0.629501, 'p_value': 0.529021}
+
+=== Selectivity significance test: semantic_p05_no_cb ===
+{'trip_corrupted': 0, 'corrupted': 55, 'trip_clean': 0, 'clean': 70}
+{'p_trip_corrupted': 0.0, 'p_trip_clean': 0.0, 'selectivity_gap': 0.0, 'z': nan, 'p_value': nan}
+
+=== Selectivity significance test: semantic_p05_ai_cb ===
+{'trip_corrupted': 13, 'corrupted': 57, 'trip_clean': 11, 'clean': 68}
+{'p_trip_corrupted': 0.22807, 'p_trip_clean': 0.161765, 'selectivity_gap': 0.066305, 'z': 0.937411, 'p_value': 0.348547}
+
+=== Selectivity significance test: semantic_p05_adaptive_cb ===
+{'trip_corrupted': 17, 'corrupted': 63, 'trip_clean': 10, 'clean': 62}
+{'p_trip_corrupted': 0.269841, 'p_trip_clean': 0.16129, 'selectivity_gap': 0.108551, 'z': 1.474551, 'p_value': 0.140333}
+
+===== Phase 4: Final recap =====
+--- results/semantic_p01_no_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.832000,0.400000,0.420000,0.000000,0.000000,19,106,21,5,16,0.263158,0.150943,0.112214,-0.008000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+--- results/semantic_p01_ai_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,125,0.848000,0.272000,0.558824,0.000000,0.208000,15,110,19,1,18,0.066667,0.163636,-0.096970,0.088000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+--- results/semantic_p01_adaptive_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,125,0.824000,0.328000,0.536585,0.000000,0.224000,12,113,22,0,22,0.000000,0.194690,-0.194690,-0.056000
+
+--- results/semantic_p03_no_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.848000,0.408000,0.372549,0.000000,0.000000,33,92,19,6,13,0.181818,0.141304,0.040514,0.088000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+--- results/semantic_p03_ai_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,125,0.792000,0.272000,0.764706,0.000000,0.184000,28,97,26,3,23,0.107143,0.237113,-0.129971,-0.248000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+--- results/semantic_p03_adaptive_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,125,0.832000,0.288000,0.583333,0.000000,0.208000,37,88,21,4,17,0.108108,0.193182,-0.085074,-0.008000
+
+--- results/semantic_p05_no_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,125,0.792000,0.472000,0.440678,0.000000,0.000000,55,70,26,13,13,0.236364,0.185714,0.050649,-0.248000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+--- results/semantic_p05_ai_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,125,0.824000,0.296000,0.594595,0.000000,0.192000,57,68,22,11,11,0.192982,0.161765,0.031218,-0.056000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+--- results/semantic_p05_adaptive_cb_all.csv ---
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,125,0.872000,0.248000,0.516129,0.000000,0.216000,63,62,16,10,6,0.158730,0.096774,0.061956,0.232000
+
+===== Done =====

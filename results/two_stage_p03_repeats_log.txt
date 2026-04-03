@@ -1,0 +1,94 @@
+===== Phase 1: Per-run evaluations =====
+=== Running two_stage_semantic_p03_no_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_no_cb_run1.jsonl
+=== Summarizing two_stage_semantic_p03_no_cb_run1 ===
+Wrote summary CSV to results/two_stage_semantic_p03_no_cb_run1.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_no_cb_run1.tex
+=== Running two_stage_semantic_p03_no_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_no_cb_run2.jsonl
+=== Summarizing two_stage_semantic_p03_no_cb_run2 ===
+Wrote summary CSV to results/two_stage_semantic_p03_no_cb_run2.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_no_cb_run2.tex
+=== Running two_stage_semantic_p03_no_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_no_cb_run3.jsonl
+=== Summarizing two_stage_semantic_p03_no_cb_run3 ===
+Wrote summary CSV to results/two_stage_semantic_p03_no_cb_run3.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_no_cb_run3.tex
+=== Running two_stage_semantic_p03_ai_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_ai_cb_run1.jsonl
+=== Summarizing two_stage_semantic_p03_ai_cb_run1 ===
+Wrote summary CSV to results/two_stage_semantic_p03_ai_cb_run1.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_ai_cb_run1.tex
+=== Running two_stage_semantic_p03_ai_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_ai_cb_run2.jsonl
+=== Summarizing two_stage_semantic_p03_ai_cb_run2 ===
+Wrote summary CSV to results/two_stage_semantic_p03_ai_cb_run2.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_ai_cb_run2.tex
+=== Running two_stage_semantic_p03_ai_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_ai_cb_run3.jsonl
+=== Summarizing two_stage_semantic_p03_ai_cb_run3 ===
+Wrote summary CSV to results/two_stage_semantic_p03_ai_cb_run3.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_ai_cb_run3.tex
+=== Running two_stage_semantic_p03_adaptive_cb_run1 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_adaptive_cb_run1.jsonl
+=== Summarizing two_stage_semantic_p03_adaptive_cb_run1 ===
+Wrote summary CSV to results/two_stage_semantic_p03_adaptive_cb_run1.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_adaptive_cb_run1.tex
+=== Running two_stage_semantic_p03_adaptive_cb_run2 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_adaptive_cb_run2.jsonl
+=== Summarizing two_stage_semantic_p03_adaptive_cb_run2 ===
+Wrote summary CSV to results/two_stage_semantic_p03_adaptive_cb_run2.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_adaptive_cb_run2.tex
+=== Running two_stage_semantic_p03_adaptive_cb_run3 ===
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/two_stage_semantic_p03_adaptive_cb_run3.jsonl
+=== Summarizing two_stage_semantic_p03_adaptive_cb_run3 ===
+Wrote summary CSV to results/two_stage_semantic_p03_adaptive_cb_run3.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_adaptive_cb_run3.tex
+===== Phase 2: Aggregate per policy =====
+=== Aggregating two_stage_semantic_p03_no_cb ===
+=== Summarizing aggregate two_stage_semantic_p03_no_cb ===
+Wrote summary CSV to results/two_stage_semantic_p03_no_cb_all.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_no_cb_all.tex
+=== CSV for two_stage_semantic_p03_no_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,75,0.520000,0.746667,0.642857,0.000000,0.000000,25,50,36,14,22,0.560000,0.440000,0.120000,-1.880000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating two_stage_semantic_p03_ai_cb ===
+=== Summarizing aggregate two_stage_semantic_p03_ai_cb ===
+Wrote summary CSV to results/two_stage_semantic_p03_ai_cb_all.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_ai_cb_all.tex
+=== CSV for two_stage_semantic_p03_ai_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,75,0.546667,0.573333,0.790698,0.000000,0.253333,28,47,34,11,23,0.392857,0.489362,-0.096505,-1.720000
+adaptive_cb,Adaptive CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+
+=== Aggregating two_stage_semantic_p03_adaptive_cb ===
+=== Summarizing aggregate two_stage_semantic_p03_adaptive_cb ===
+Wrote summary CSV to results/two_stage_semantic_p03_adaptive_cb_all.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_adaptive_cb_all.tex
+=== CSV for two_stage_semantic_p03_adaptive_cb ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+ai_cb,AI-guided CB,0,0.000000,0.000000,0.000000,0.000000,0.000000,0,0,0,0,0,0.000000,0.000000,0.000000,0.000000
+adaptive_cb,Adaptive CB,75,0.573333,0.533333,0.800000,0.000000,0.253333,16,59,32,7,25,0.437500,0.423729,0.013771,-1.560000
+
+===== Phase 3: Combined summary =====
+Wrote summary CSV to results/two_stage_semantic_p03_combined_all.csv
+Wrote LaTeX table to results/two_stage_semantic_p03_combined_all.tex
+=== Final combined CSV ===
+policy,label,runs,success_rate,upstream_failure_rate,cfr,safe_failure_rate,avg_trip_count,corrupted,clean,cascades,corrupted_and_cascade,clean_and_cascade,cfr_injected,cfr_clean,lift,utility
+no_cb,No CB,75,0.520000,0.746667,0.642857,0.000000,0.000000,25,50,36,14,22,0.560000,0.440000,0.120000,-1.880000
+ai_cb,AI-guided CB,75,0.546667,0.573333,0.790698,0.000000,0.253333,28,47,34,11,23,0.392857,0.489362,-0.096505,-1.720000
+adaptive_cb,Adaptive CB,75,0.573333,0.533333,0.800000,0.000000,0.253333,16,59,32,7,25,0.437500,0.423729,0.013771,-1.560000
