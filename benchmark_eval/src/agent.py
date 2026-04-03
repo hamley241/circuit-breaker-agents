@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict
+import random
+from typing import Any, Dict, List
 
 from .breaker import AdaptiveBreaker, StaticBreaker
 from .checker import Checker
 from .config import BreakerConfig, PROMPTS_DIR
 from .models import BaseModelClient
-from .schemas import CheckerResult, RunTrace, StageTrace, TaskRecord
+from .schemas import CheckerResult, IntermediateHandoff, RunTrace, StageTrace, TaskRecord
 from .utils import load_text
 
 
@@ -22,9 +23,23 @@ class BenchmarkAgentRunner:
         filename = f"fallback_{stage}.txt" if fallback else f"{stage}.txt"
         return load_text(PROMPTS_DIR / filename)
 
+    def _verifier_prompt(self, execution_mode: str, fallback: bool) -> str:
+        prompt = self._prompt_for('verifier', fallback=fallback)
+        if execution_mode != 'state_locked':
+            return prompt
+        return (
+            prompt
+            + "\n"
+            + "In state_locked mode, use only intermediate_handoff as the authoritative intermediate state.\n"
+            + "Do not recompute or regenerate missing reasoning from the original question.\n"
+            + "Do not infer or recover planner or executor state beyond what is present in intermediate_handoff.\n"
+            + "If intermediate_handoff is incomplete, ambiguous, or wrong, still proceed using only it.\n"
+        )
+
     def _run_stage(self, stage: str, task: TaskRecord, payload: Dict[str, Any], fallback: bool) -> str:
+        prompt = self._prompt_for(stage, fallback=fallback)
         response = self.model.generate(
-            prompt=self._prompt_for(stage, fallback=fallback),
+            prompt=prompt,
             context={
                 'stage': stage,
                 'task': task.model_dump(),
@@ -72,8 +87,124 @@ class BenchmarkAgentRunner:
         except Exception:
             return default
 
-    def execute_task(self, task: TaskRecord, policy: str, rolling_risk: float = 0.0) -> RunTrace:
-        trace = RunTrace(task_id=task.task_id, policy=policy)
+    @staticmethod
+    def _as_str_list(value: Any) -> List[str]:
+        if not isinstance(value, list):
+            return []
+        return [str(item) for item in value if str(item).strip()]
+
+    def _build_intermediate_handoff(self, planner_payload: Dict[str, Any]) -> IntermediateHandoff | None:
+        plan_steps = self._as_str_list(planner_payload.get('plan'))
+        assumptions = self._as_str_list(planner_payload.get('assumptions'))
+        facts = plan_steps + assumptions
+        summary = ' '.join(plan_steps).strip()
+        if not summary and facts:
+            summary = facts[0]
+        if not summary and not facts:
+            return None
+        return IntermediateHandoff(
+            summary=summary,
+            facts=facts,
+            confidence=1.0,
+        )
+
+    @staticmethod
+    def _match_case(replacement: str, original: str) -> str:
+        if original.isupper():
+            return replacement.upper()
+        if original[:1].isupper():
+            return replacement.capitalize()
+        return replacement
+
+    @staticmethod
+    def _flip_operation_words(text: str) -> str:
+        replacements = {
+            'increase': 'decrease',
+            'decrease': 'increase',
+            'add': 'subtract',
+            'subtract': 'add',
+            'before': 'after',
+            'after': 'before',
+        }
+        lower_text = text.lower()
+        for source, target in replacements.items():
+            start = lower_text.find(source)
+            if start == -1:
+                continue
+            end = start + len(source)
+            before_ok = start == 0 or not lower_text[start - 1].isalnum()
+            after_ok = end == len(lower_text) or not lower_text[end].isalnum()
+            if not (before_ok and after_ok):
+                continue
+            original = text[start:end]
+            replacement = BenchmarkAgentRunner._match_case(target, original)
+            return text[:start] + replacement + text[end:]
+        return text
+
+    def _inject_intermediate_fault(self, handoff: IntermediateHandoff, fault_type: str) -> tuple[IntermediateHandoff, str]:
+        if fault_type == 'structural':
+            variants = ['empty_handoff', 'partial_handoff', 'reordered_degraded_handoff']
+            variant = random.choice(variants)
+            if variant == 'empty_handoff':
+                return IntermediateHandoff(summary='', facts=[], confidence=0.0), variant
+            if variant == 'partial_handoff':
+                return (
+                    IntermediateHandoff(
+                        summary=handoff.summary,
+                        facts=handoff.facts[:1],
+                        confidence=max(0.0, handoff.confidence - 0.35),
+                    ),
+                    variant,
+                )
+            degraded_facts = list(handoff.facts)
+            if degraded_facts:
+                degraded_facts = degraded_facts[1:] + degraded_facts[:1]
+                if len(degraded_facts) == 1:
+                    degraded_facts.append(degraded_facts[0])
+            return (
+                IntermediateHandoff(
+                    summary=handoff.summary[: max(1, len(handoff.summary) // 2)].strip(),
+                    facts=degraded_facts,
+                    confidence=max(0.0, handoff.confidence - 0.45),
+                ),
+                variant,
+            )
+        if fault_type == 'semantic':
+            variants = ['summary_drift', 'fact_drift', 'step_reorder']
+            variant = random.choice(variants)
+            if variant == 'summary_drift':
+                return (
+                    IntermediateHandoff(
+                        summary=self._flip_operation_words(handoff.summary),
+                        facts=handoff.facts,
+                        confidence=max(0.0, handoff.confidence - 0.25),
+                    ),
+                    variant,
+                )
+            if variant == 'fact_drift':
+                drifted_facts = list(handoff.facts)
+                if drifted_facts:
+                    drifted_facts[0] = self._flip_operation_words(drifted_facts[0])
+                return (
+                    IntermediateHandoff(
+                        summary=handoff.summary,
+                        facts=drifted_facts,
+                        confidence=max(0.0, handoff.confidence - 0.25),
+                    ),
+                    variant,
+                )
+            return (
+                IntermediateHandoff(
+                    summary=handoff.summary,
+                    facts=list(reversed(handoff.facts)),
+                    confidence=max(0.0, handoff.confidence - 0.3),
+                ),
+                variant,
+            )
+        return handoff, ''
+
+    def execute_task(self, task: TaskRecord, policy: str, rolling_risk: float = 0.0, execution_mode: str = 'state_locked', fault_type: str = 'none', inject_rate: float = 0.0) -> RunTrace:
+        trace = RunTrace(task_id=task.task_id, policy=policy, execution_mode=execution_mode, fault_type=fault_type)
         prior_failures = 0
 
         planner_output = self._run_stage('planner', task, payload={'question': task.question}, fallback=False)
@@ -92,6 +223,33 @@ class BenchmarkAgentRunner:
             planner_payload = self._safe_json_loads(planner_output, {'plan': [], 'assumptions': []})
             if not planner_check.valid:
                 prior_failures += 1
+
+        intermediate_handoff = self._build_intermediate_handoff(planner_payload)
+        if intermediate_handoff is not None and inject_rate > 0.0 and random.random() < inject_rate:
+            intermediate_handoff, trace.fault_variant = self._inject_intermediate_fault(intermediate_handoff, fault_type=fault_type)
+            trace.upstream_corrupted = True
+        if intermediate_handoff is None:
+            trace.upstream_failure_seen = True
+        trace.intermediate_valid = bool(intermediate_handoff is not None and intermediate_handoff.summary.strip() and intermediate_handoff.facts)
+        if trace.upstream_corrupted and not trace.intermediate_valid:
+            trace.upstream_failure_seen = True
+        trace.stages.append(
+            StageTrace(
+                stage='intermediate_handoff',
+                raw_output=(
+                    {
+                        'summary': intermediate_handoff.summary,
+                        'facts': intermediate_handoff.facts,
+                        'confidence': intermediate_handoff.confidence,
+                    }
+                    if intermediate_handoff is not None
+                    else {'summary': '', 'facts': [], 'confidence': 0.0}
+                ),
+                checker=CheckerResult(valid=trace.intermediate_valid, confidence=1.0 if trace.intermediate_valid else 0.0),
+                breaker_tripped=False,
+                used_fallback=False,
+            )
+        )
 
         executor_output = self._run_stage('executor', task, payload=planner_payload, fallback=False)
         executor_check = self.checker.check('executor', executor_output, task.model_dump())
@@ -116,8 +274,42 @@ class BenchmarkAgentRunner:
             if not executor_check.valid:
                 prior_failures += 1
 
-        verifier_output = self._run_stage('verifier', task, payload=executor_payload, fallback=False)
+        if execution_mode == 'state_locked':
+            verifier_payload_input = {
+                'intermediate_handoff': (
+                    {
+                        'summary': intermediate_handoff.summary,
+                        'facts': intermediate_handoff.facts,
+                        'confidence': intermediate_handoff.confidence,
+                    }
+                    if intermediate_handoff is not None
+                    else {'summary': '', 'facts': [], 'confidence': 0.0}
+                ),
+            }
+        else:
+            verifier_payload_input = executor_payload
+        if execution_mode == 'state_locked':
+            verifier_output = self.model.generate(
+                prompt=self._verifier_prompt(execution_mode=execution_mode, fallback=False),
+                context={
+                    'stage': 'verifier',
+                    'task': task.model_dump(),
+                    'payload': verifier_payload_input,
+                    'fallback': False,
+                },
+            ).text
+        else:
+            verifier_output = self._run_stage('verifier', task, payload=verifier_payload_input, fallback=False)
         verifier_payload = self._safe_json_loads(verifier_output, {'final_answer': ''})
+        trace.stages.append(
+            StageTrace(
+                stage='verifier',
+                raw_output=verifier_output,
+                checker=CheckerResult(valid=bool(str(verifier_payload.get('final_answer', '')).strip()), confidence=1.0),
+                breaker_tripped=False,
+                used_fallback=False,
+            )
+        )
         trace.final_answer = str(verifier_payload.get('final_answer', ''))
         if not trace.final_answer.strip():
             trace.upstream_failure_seen = True

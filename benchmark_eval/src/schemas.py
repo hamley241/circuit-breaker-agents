@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
@@ -17,6 +18,13 @@ class CheckerResult(BaseModel):
     reasons: List[str] = Field(default_factory=list)
 
 
+@dataclass
+class IntermediateHandoff:
+    summary: str
+    facts: list[str]
+    confidence: float
+
+
 class StageTrace(BaseModel):
     stage: str
     raw_output: Any
@@ -31,6 +39,15 @@ class RunTrace(BaseModel):
     upstream_failure_seen: bool = False
     final_success: bool = False
     cascade: bool = False
+    execution_mode: str = 'state_locked'
+    fault_type: str = 'none'
+    upstream_corrupted: bool = False
+    fault_variant: str = ''
+    cb_tripped: bool = False
+    trip_reason: str = ''
+    intermediate_valid: bool = True
+    safe_failure: bool = False
+    final_correct: bool = False
     trip_count: int = 0
     stages: List[StageTrace] = Field(default_factory=list)
     final_answer: Optional[str] = None

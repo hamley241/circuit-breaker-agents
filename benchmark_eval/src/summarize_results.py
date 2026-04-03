@@ -36,7 +36,25 @@ def load_traces(path: Path) -> List[RunTrace]:
 
 
 def to_csv(rows: List[Dict[str, str]]) -> str:
-    headers = ["policy", "label", "runs", "success_rate", "upstream_failure_rate", "cfr", "safe_failure_rate", "avg_trip_count", "utility"]
+    headers = [
+        "policy",
+        "label",
+        "runs",
+        "success_rate",
+        "upstream_failure_rate",
+        "cfr",
+        "safe_failure_rate",
+        "avg_trip_count",
+        "corrupted",
+        "clean",
+        "cascades",
+        "corrupted_and_cascade",
+        "clean_and_cascade",
+        "cfr_injected",
+        "cfr_clean",
+        "lift",
+        "utility",
+    ]
     lines = [",".join(headers)]
     for row in rows:
         lines.append(",".join(str(row[h]) for h in headers))
@@ -46,19 +64,21 @@ def to_csv(rows: List[Dict[str, str]]) -> str:
 def to_latex(rows: List[Dict[str, str]], cost: float) -> str:
     cost_label = int(cost) if float(cost).is_integer() else cost
     lines = []
-    lines.append("\\begin{tabular}{lrrrr}")
+    lines.append("\\begin{tabular}{lrrrrrr}")
     lines.append("\\toprule")
     lines.append(
-        "Method & Success $\\uparrow$ & CFR $\\downarrow$ & Avg. Trips & Utility ($c={}$) $\\uparrow$ \\\\".format(cost_label)
+        "Method & Success $\\uparrow$ & CFR $\\downarrow$ & CFR Injected & CFR Clean & Lift & Utility ($c={}$) $\\uparrow$ \\\\".format(cost_label)
     )
     lines.append("\\midrule")
     for row in rows:
         lines.append(
-            "{} & {:.3f} & {:.3f} & {:.2f} & {:.3f} \\\\".format(
+            "{} & {:.3f} & {:.3f} & {:.3f} & {:.3f} & {:.3f} & {:.3f} \\\\".format(
                 row["label"],
                 float(row["success_rate"]),
                 float(row["cfr"]),
-                float(row["avg_trip_count"]),
+                float(row["cfr_injected"]),
+                float(row["cfr_clean"]),
+                float(row["lift"]),
                 float(row["utility"]),
             )
         )
@@ -88,6 +108,14 @@ def main() -> None:
                 "cfr": f"{summary['cfr']:.6f}",
                 "safe_failure_rate": f"{summary['safe_failure_rate']:.6f}",
                 "avg_trip_count": f"{summary['avg_trip_count']:.6f}",
+                "corrupted": int(summary["corrupted"]),
+                "clean": int(summary["clean"]),
+                "cascades": int(summary["cascades"]),
+                "corrupted_and_cascade": int(summary["corrupted_and_cascade"]),
+                "clean_and_cascade": int(summary["clean_and_cascade"]),
+                "cfr_injected": f"{summary['cfr_injected']:.6f}",
+                "cfr_clean": f"{summary['cfr_clean']:.6f}",
+                "lift": f"{summary['lift']:.6f}",
                 "utility": f"{summary['utility']:.6f}",
             }
         )
