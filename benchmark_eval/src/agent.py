@@ -35,6 +35,7 @@ class BenchmarkAgentRunner:
             + "Do not recompute or regenerate missing reasoning from the original question.\n"
             + "Do not infer or recover planner or executor state beyond what is present in intermediate_handoff.\n"
             + "If intermediate_handoff is incomplete, ambiguous, or wrong, still proceed using only it.\n"
+            + "\"final_answer\" must contain only the answer value itself — a number, word, or JSON value. Do not include any explanation, reasoning, units, symbols, or working. Return only the bare value.\n"
         )
 
     def _run_stage(self, stage: str, task: TaskRecord, payload: Dict[str, Any], fallback: bool) -> str:
