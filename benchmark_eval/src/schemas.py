@@ -44,6 +44,7 @@ class RunTrace(BaseModel):
     fault_type: str = 'none'
     upstream_corrupted: bool = False
     fault_variant: str = ''
+    verifier_input_source: str = ''
     cb_tripped: bool = False
     trip_reason: str = ''
     intermediate_valid: bool = True
@@ -52,4 +53,7 @@ class RunTrace(BaseModel):
     trip_count: int = 0
     stages: List[StageTrace] = Field(default_factory=list)
     final_answer: Optional[str] = None
+    reference_answer: Optional[str] = None
     grader_reason: Optional[str] = None
+    grading_reason: Optional[str] = None
+    observed_final_answer_for_grading: Optional[str] = None

@@ -22,6 +22,15 @@ class SimpleExactMatchGrader:
     def _normalize_whitespace(text: str) -> str:
         return re.sub(r"\s+", " ", (text or "").strip())
 
+    @staticmethod
+    def _singleton_scalar_value(value: object) -> object | None:
+        if not isinstance(value, dict) or len(value) != 1:
+            return None
+        only_value = next(iter(value.values()))
+        if isinstance(only_value, (dict, list)):
+            return None
+        return only_value
+
     def _canonicalize(self, text: str) -> tuple[bool, object, str]:
         cleaned = self._strip_code_fences(text)
         try:
@@ -39,7 +48,13 @@ class SimpleExactMatchGrader:
         observed_is_json, observed_value, observed_canonical = self._canonicalize(observed_raw)
 
         if expected_is_json and observed_is_json:
-            passed = expected_value == observed_value
+            expected_singleton = self._singleton_scalar_value(expected_value)
+            observed_singleton = self._singleton_scalar_value(observed_value)
+            passed = (
+                expected_value == observed_value
+                or (expected_singleton is not None and expected_singleton == observed_value)
+                or (observed_singleton is not None and expected_value == observed_singleton)
+            )
             reason = "json semantic match" if passed else (
                 f"json mismatch expected={expected_canonical!r} observed={observed_canonical!r}"
             )

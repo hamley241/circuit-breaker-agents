@@ -14,6 +14,11 @@ from .utils import load_text
 
 
 class BenchmarkAgentRunner:
+    _BARE_VALUE_INSTRUCTION = (
+        "\"final_answer\" must contain only the answer value itself — a number, word, or JSON value. "
+        "Do not include any explanation, reasoning, units, symbols, or working. Return only the bare value."
+    )
+
     def __init__(self, model: BaseModelClient, breaker_config: BreakerConfig | None = None):
         self.model = model
         self.checker = Checker(model)
@@ -28,14 +33,17 @@ class BenchmarkAgentRunner:
         prompt = self._prompt_for('verifier', fallback=fallback)
         if execution_mode != 'state_locked':
             return prompt
+        prompt = prompt.replace(self._BARE_VALUE_INSTRUCTION, '').rstrip()
         return (
             prompt
             + "\n"
             + "In state_locked mode, use only intermediate_handoff as the authoritative intermediate state.\n"
-            + "Do not recompute or regenerate missing reasoning from the original question.\n"
+            + "Do not use or infer missing values from the original question.\n"
             + "Do not infer or recover planner or executor state beyond what is present in intermediate_handoff.\n"
-            + "If intermediate_handoff is incomplete, ambiguous, or wrong, still proceed using only it.\n"
-            + "\"final_answer\" must contain only the answer value itself — a number, word, or JSON value. Do not include any explanation, reasoning, units, symbols, or working. Return only the bare value.\n"
+            + "Do not correct wrong values.\n"
+            + "Preserve the provided state even if it appears inconsistent.\n"
+            + self._BARE_VALUE_INSTRUCTION
+            + "\n"
         )
 
     def _run_stage(self, stage: str, task: TaskRecord, payload: Dict[str, Any], fallback: bool) -> str:
@@ -322,14 +330,16 @@ class BenchmarkAgentRunner:
                     else {'summary': '', 'facts': [], 'confidence': 0.0}
                 ),
             }
+            trace.verifier_input_source = 'intermediate_handoff_only'
         else:
             verifier_payload_input = executor_payload
+            trace.verifier_input_source = 'default'
         if execution_mode == 'state_locked':
             verifier_output = self.model.generate(
                 prompt=self._verifier_prompt(execution_mode=execution_mode, fallback=False),
                 context={
                     'stage': 'verifier',
-                    'task': task.model_dump(),
+                    'task': {'task_id': task.task_id},
                     'payload': verifier_payload_input,
                     'fallback': False,
                 },
