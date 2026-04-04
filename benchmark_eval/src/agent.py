@@ -83,11 +83,23 @@ class BenchmarkAgentRunner:
     def _should_trip(self, policy: str, checker: CheckerResult, prior_failures: int, rolling_risk: float) -> bool:
         if policy == 'no_cb':
             return False
+        if policy == 'completeness_cb':
+            return False
         if policy == 'ai_cb':
             return self.static_breaker.should_trip(checker)
         if policy == 'adaptive_cb':
             return self.adaptive_breaker.should_trip(checker, prior_failures=prior_failures, rolling_risk=rolling_risk)
         raise ValueError(f'Unknown policy: {policy}')
+
+    @staticmethod
+    def _handoff_has_numeric_values(handoff: IntermediateHandoff | None) -> bool:
+        if handoff is None:
+            return False
+        haystacks = [handoff.summary, *handoff.facts]
+        for text in haystacks:
+            if re.search(r'(?<![A-Za-z])[+-]?\d+(?:\.\d+)?(?![A-Za-z])', text):
+                return True
+        return False
 
     @staticmethod
     def _safe_json_loads(raw_text: str, default: Dict[str, Any]) -> Dict[str, Any]:
@@ -269,6 +281,7 @@ class BenchmarkAgentRunner:
         if intermediate_handoff is None:
             trace.upstream_failure_seen = True
         trace.intermediate_valid = bool(intermediate_handoff is not None and intermediate_handoff.summary.strip() and intermediate_handoff.facts)
+        trace.handoff_has_numeric_values = self._handoff_has_numeric_values(intermediate_handoff)
         if trace.upstream_corrupted and not trace.intermediate_valid:
             trace.upstream_failure_seen = True
         trace.stages.append(
@@ -334,6 +347,31 @@ class BenchmarkAgentRunner:
         else:
             verifier_payload_input = executor_payload
             trace.verifier_input_source = 'default'
+
+        completeness_trip = (
+            policy == 'completeness_cb'
+            and execution_mode == 'state_locked'
+            and not trace.handoff_has_numeric_values
+        )
+        if completeness_trip:
+            trace.trip_count += 1
+            trace.cb_tripped = True
+            trace.trip_reason = 'missing_numeric_values'
+            fallback_output = self._run_stage('verifier', task, payload=verifier_payload_input, fallback=True)
+            verifier_payload = self._safe_json_loads(fallback_output, {'final_answer': ''})
+            trace.stages.append(
+                StageTrace(
+                    stage='verifier',
+                    raw_output=fallback_output,
+                    checker=CheckerResult(valid=bool(str(verifier_payload.get('final_answer', '')).strip()), confidence=1.0),
+                    breaker_tripped=True,
+                    used_fallback=True,
+                )
+            )
+            trace.final_answer = str(verifier_payload.get('final_answer', ''))
+            if not trace.final_answer.strip():
+                trace.upstream_failure_seen = True
+            return trace
         if execution_mode == 'state_locked':
             verifier_output = self.model.generate(
                 prompt=self._verifier_prompt(execution_mode=execution_mode, fallback=False),

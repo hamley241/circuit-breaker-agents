@@ -10,7 +10,7 @@ main() {
   local execution_mode="${EXECUTION_MODE:-state_locked}"
   local pipeline_variant="${PIPELINE_VARIANT:-three_stage}"
   local fault_type="${FAULT_TYPE:-semantic}"
-  local -a policies=("no_cb" "ai_cb" "adaptive_cb")
+  local -a policies=("no_cb" "ai_cb" "adaptive_cb" "completeness_cb")
 
   if [[ -z "${prefix}" || -z "${inject_rate}" ]]; then
     echo "Usage: $0 <output-prefix> <inject-rate> [input-jsonl]" >&2

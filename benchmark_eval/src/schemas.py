@@ -45,6 +45,7 @@ class RunTrace(BaseModel):
     upstream_corrupted: bool = False
     fault_variant: str = ''
     verifier_input_source: str = ''
+    handoff_has_numeric_values: bool = False
     cb_tripped: bool = False
     trip_reason: str = ''
     intermediate_valid: bool = True

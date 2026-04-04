@@ -1,0 +1,2 @@
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/completeness_dep_p07_v2_adaptive_cb_run1.jsonl

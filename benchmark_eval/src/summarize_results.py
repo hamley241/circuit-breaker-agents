@@ -13,6 +13,7 @@ LABELS = {
     "no_cb": "No CB",
     "ai_cb": "AI-guided CB",
     "adaptive_cb": "Adaptive CB",
+    "completeness_cb": "Completeness CB",
 }
 
 
@@ -95,7 +96,7 @@ def main() -> None:
         by_policy.setdefault(trace.policy, []).append(trace)
 
     rows: List[Dict[str, str]] = []
-    for policy in ["no_cb", "ai_cb", "adaptive_cb"]:
+    for policy in ["no_cb", "ai_cb", "adaptive_cb", "completeness_cb"]:
         traces_for_policy = by_policy.get(policy, [])
         summary = summarize_traces(traces_for_policy, catastrophe_cost=args.catastrophe_cost)
         rows.append(
