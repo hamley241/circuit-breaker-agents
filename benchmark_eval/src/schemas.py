@@ -76,6 +76,8 @@ class RunTrace(BaseModel):
     stage2_handoff: Optional[Any] = None
     predicted_trip: bool = False
     predicted_trip_reason: str = ''
+    recoverability_computed: bool = False
+    oracle_computed: bool = False
     recoverability_stage1: Optional[float] = None
     recoverability_stage2: Optional[float] = None
     reconstruction_gap: Optional[float] = None
