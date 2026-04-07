@@ -220,7 +220,7 @@ class BenchmarkAgentRunner:
                 variant,
             )
         if fault_type == 'semantic':
-            variants = ['summary_drift', 'fact_drift', 'step_reorder']
+            variants = ['summary_drift', 'fact_drift', 'step_reorder', 'givens_corruption']
             variant = random.choice(variants)
             if variant == 'summary_drift':
                 return (
@@ -239,6 +239,28 @@ class BenchmarkAgentRunner:
                     IntermediateHandoff(
                         summary=handoff.summary,
                         facts=drifted_facts,
+                        confidence=max(0.0, handoff.confidence - 0.25),
+                    ),
+                    variant,
+                )
+            if variant == 'givens_corruption':
+                corrupted_facts = list(handoff.facts)
+                for index, fact in enumerate(corrupted_facts):
+                    if '=' not in fact:
+                        continue
+                    key, value = fact.split('=', 1)
+                    value = value.strip()
+                    try:
+                        num = float(value)
+                    except ValueError:
+                        continue
+                    corrupted_value = str(round(num * 1.5, 4))
+                    corrupted_facts[index] = f'{key.strip()}={corrupted_value}'
+                    break
+                return (
+                    IntermediateHandoff(
+                        summary=handoff.summary,
+                        facts=corrupted_facts,
                         confidence=max(0.0, handoff.confidence - 0.25),
                     ),
                     variant,
