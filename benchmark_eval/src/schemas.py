@@ -16,6 +16,13 @@ class CheckerResult(BaseModel):
     valid: bool
     confidence: float
     reasons: List[str] = Field(default_factory=list)
+    verifier_name: str = ''
+    verifier_variant: str = ''
+    recoverability_score: Optional[float] = None
+    recoverability_missing_fields: List[str] = Field(default_factory=list)
+    recoverability_raw_response: Optional[str] = None
+    verifier_reasoning: Optional[str] = None
+    verifier_used_additional_context: Optional[bool] = None
 
 
 @dataclass
@@ -31,6 +38,10 @@ class StageTrace(BaseModel):
     checker: CheckerResult
     breaker_tripped: bool = False
     used_fallback: bool = False
+    observed_only: bool = False
+    verifier_input_source: str = ''
+    stage_spec_used: bool = False
+    stage_spec_variant: str = ''
 
 
 class RunTrace(BaseModel):
@@ -58,3 +69,20 @@ class RunTrace(BaseModel):
     grader_reason: Optional[str] = None
     grading_reason: Optional[str] = None
     observed_final_answer_for_grading: Optional[str] = None
+    mode: str = 'intervention'
+    verifier_name: str = ''
+    verifier_variant: str = ''
+    stage1_output: Optional[Any] = None
+    stage2_handoff: Optional[Any] = None
+    predicted_trip: bool = False
+    predicted_trip_reason: str = ''
+    recoverability_stage1: Optional[float] = None
+    recoverability_stage2: Optional[float] = None
+    reconstruction_gap: Optional[float] = None
+    oracle_stage3_from_stage1_success: Optional[bool] = None
+    oracle_stage3_from_stage1_answer: Optional[str] = None
+    recoverable_handoff_failure: Optional[bool] = None
+    fallback_attempted: bool = False
+    fallback_success: Optional[bool] = None
+    trip_on_true_cascade: Optional[bool] = None
+    trip_on_false_alarm: Optional[bool] = None
