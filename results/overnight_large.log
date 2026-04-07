@@ -1,0 +1,13 @@
+[START] handoff_only run1 seed=201
+[START] handoff_only run2 seed=202
+[START] handoff_only run3 seed=203
+[START] handoff_plus_task run1 seed=201
+[START] handoff_plus_task run2 seed=202
+[START] handoff_plus_task run3 seed=203
+[FAIL ] handoff_only run2 — see results/large_gsm8k_handoff_only_run2.log
+[FAIL ] handoff_plus_task run2 — see results/large_gsm8k_handoff_plus_task_run2.log
+[FAIL ] handoff_only run1 — see results/large_gsm8k_handoff_only_run1.log
+[FAIL ] handoff_plus_task run1 — see results/large_gsm8k_handoff_plus_task_run1.log
+[FAIL ] handoff_plus_task run3 — see results/large_gsm8k_handoff_plus_task_run3.log
+[FAIL ] handoff_only run3 — see results/large_gsm8k_handoff_only_run3.log
+All runs complete

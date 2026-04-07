@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/src/run_eval.py", line 128, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/src/run_eval.py", line 72, in main
+    trace = runner.execute_task(
+        task=task,
+    ...<9 lines>...
+        compute_recoverability=args.compute_recoverability,
+    )
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/src/agent.py", line 389, in execute_task
+    planner_check = self.checker.check('planner', planner_output, task.model_dump())
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/src/checker.py", line 27, in check
+    response = self.model.generate(
+        prompt=self.prompt,
+        context={'stage': stage, 'task': task, 'candidate_output': output_text},
+    )
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/src/models.py", line 78, in generate
+    response = self.client.responses.create(
+        model=self.model_name,
+    ...<2 lines>...
+        max_output_tokens=self.max_output_tokens,
+    )
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/.venv/lib/python3.14/site-packages/openai/resources/responses/responses.py", line 898, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<41 lines>...
+        stream_cls=Stream[ResponseStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/.venv/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gpatley/workspace/circuit-breaker-agents/benchmark_eval/.venv/lib/python3.14/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
