@@ -78,6 +78,17 @@ def main() -> None:
                 success, reason = grader.grade(task, observed_final_answer)
                 record_grading_details(trace, task.reference_answer, observed_final_answer, reason)
                 trace.final_success = success
+                if args.compute_oracle and not trace.final_success:
+                    oracle_answer, oracle_raw_output = runner.run_stage3_oracle_from_stage1(task, trace)
+                    oracle_success, _ = grader.grade(task, oracle_answer)
+                    trace.oracle_stage3_from_stage1_answer = oracle_answer
+                    trace.oracle_verifier_raw_output = oracle_raw_output
+                    trace.oracle_stage3_from_stage1_success = oracle_success
+                    trace.recoverable_handoff_failure = (
+                        (trace.upstream_corrupted or trace.fault_variant != '')
+                        and (not trace.final_success)
+                        and trace.oracle_stage3_from_stage1_success is True
+                    )
                 trace.execution_mode = getattr(trace, 'execution_mode', 'state_locked')
                 trace.pipeline_variant = getattr(trace, 'pipeline_variant', 'three_stage')
                 trace.fault_type = getattr(trace, 'fault_type', 'none')

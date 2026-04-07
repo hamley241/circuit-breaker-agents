@@ -83,6 +83,7 @@ class RunTrace(BaseModel):
     reconstruction_gap: Optional[float] = None
     oracle_stage3_from_stage1_success: Optional[bool] = None
     oracle_stage3_from_stage1_answer: Optional[str] = None
+    oracle_verifier_raw_output: Optional[str] = None
     recoverable_handoff_failure: Optional[bool] = None
     fallback_attempted: bool = False
     fallback_success: Optional[bool] = None

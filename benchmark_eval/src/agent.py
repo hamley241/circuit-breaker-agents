@@ -78,6 +78,7 @@ class BenchmarkAgentRunner:
             )
         )
         if not checker.valid:
+            # Symptom-based flag: observed stage degradation during execution.
             trace.upstream_failure_seen = True
 
     def _should_trip(self, policy: str, checker: CheckerResult, prior_failures: int, rolling_risk: float) -> bool:
@@ -129,6 +130,29 @@ class BenchmarkAgentRunner:
             facts=facts,
             confidence=1.0,
         )
+
+    @staticmethod
+    def _handoff_to_dict(handoff: IntermediateHandoff | None) -> Dict[str, Any]:
+        if handoff is None:
+            return {'summary': '', 'facts': [], 'confidence': 0.0}
+        return {
+            'summary': handoff.summary,
+            'facts': handoff.facts,
+            'confidence': handoff.confidence,
+        }
+
+    def _planner_payload_to_handoff_dict(self, planner_payload: Dict[str, Any]) -> Dict[str, Any]:
+        plan_steps = self._as_str_list(planner_payload.get('plan'))
+        assumptions = self._as_str_list(planner_payload.get('assumptions'))
+        facts = plan_steps + assumptions
+        summary = ' '.join(plan_steps).strip()
+        if not summary and facts:
+            summary = facts[0]
+        return {
+            'summary': summary,
+            'facts': facts,
+            'confidence': 1.0 if summary or facts else 0.0,
+        }
 
     @staticmethod
     def _match_case(replacement: str, original: str) -> str:
@@ -273,29 +297,25 @@ class BenchmarkAgentRunner:
             planner_payload = self._safe_json_loads(planner_output, {'plan': [], 'assumptions': []})
             if not planner_check.valid:
                 prior_failures += 1
+        trace.stage1_output = planner_payload
 
         intermediate_handoff = self._build_intermediate_handoff(planner_payload)
         if intermediate_handoff is not None and inject_rate > 0.0 and random.random() < inject_rate:
             intermediate_handoff, trace.fault_variant = self._inject_intermediate_fault(intermediate_handoff, fault_type=fault_type)
+            # Cause-based flag: this run received an injected upstream corruption.
             trace.upstream_corrupted = True
         if intermediate_handoff is None:
+            # Symptom-based flag: handoff construction failed.
             trace.upstream_failure_seen = True
         trace.intermediate_valid = bool(intermediate_handoff is not None and intermediate_handoff.summary.strip() and intermediate_handoff.facts)
         trace.handoff_has_numeric_values = self._handoff_has_numeric_values(intermediate_handoff)
         if trace.upstream_corrupted and not trace.intermediate_valid:
             trace.upstream_failure_seen = True
+        trace.stage2_handoff = self._handoff_to_dict(intermediate_handoff)
         trace.stages.append(
             StageTrace(
                 stage='intermediate_handoff',
-                raw_output=(
-                    {
-                        'summary': intermediate_handoff.summary,
-                        'facts': intermediate_handoff.facts,
-                        'confidence': intermediate_handoff.confidence,
-                    }
-                    if intermediate_handoff is not None
-                    else {'summary': '', 'facts': [], 'confidence': 0.0}
-                ),
+                raw_output=trace.stage2_handoff,
                 checker=CheckerResult(valid=trace.intermediate_valid, confidence=1.0 if trace.intermediate_valid else 0.0),
                 breaker_tripped=False,
                 used_fallback=False,
@@ -333,15 +353,7 @@ class BenchmarkAgentRunner:
 
         if execution_mode == 'state_locked':
             verifier_payload_input = {
-                'intermediate_handoff': (
-                    {
-                        'summary': intermediate_handoff.summary,
-                        'facts': intermediate_handoff.facts,
-                        'confidence': intermediate_handoff.confidence,
-                    }
-                    if intermediate_handoff is not None
-                    else {'summary': '', 'facts': [], 'confidence': 0.0}
-                ),
+                'intermediate_handoff': self._handoff_to_dict(intermediate_handoff),
             }
             trace.verifier_input_source = 'intermediate_handoff_only'
         else:
@@ -396,5 +408,23 @@ class BenchmarkAgentRunner:
         )
         trace.final_answer = str(verifier_payload.get('final_answer', ''))
         if not trace.final_answer.strip():
+            # Symptom-based flag: downstream produced no usable final answer.
             trace.upstream_failure_seen = True
         return trace
+
+    def run_stage3_oracle_from_stage1(self, task: TaskRecord, trace: RunTrace) -> tuple[str, str]:
+        # Oracle-only adapter: reshape raw planner_payload into the minimal
+        # handoff schema so oracle failure reflects information insufficiency,
+        # not a prompt/schema mismatch.
+        oracle_handoff = self._planner_payload_to_handoff_dict(trace.stage1_output or {})
+        verifier_output = self.model.generate(
+            prompt=self._verifier_prompt(execution_mode='state_locked', fallback=False),
+            context={
+                'stage': 'verifier',
+                'task': {'task_id': task.task_id},
+                'payload': {'intermediate_handoff': oracle_handoff},
+                'fallback': False,
+            },
+        ).text
+        verifier_payload = self._safe_json_loads(verifier_output, {'final_answer': ''})
+        return str(verifier_payload.get('final_answer', '')), verifier_output
