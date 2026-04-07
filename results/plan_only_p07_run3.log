@@ -1,0 +1,2 @@
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/plan_only_p07_run3.jsonl
