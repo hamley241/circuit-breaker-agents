@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 from pathlib import Path
 from typing import Dict, List
 
@@ -29,6 +30,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--verifier-variant', default='', choices=['', 'correct', 'ablated', 'wrong_spec'])
     parser.add_argument('--compute-recoverability', action='store_true')
     parser.add_argument('--compute-oracle', action='store_true')
+    parser.add_argument('--seed', type=int, default=None)
     return parser.parse_args()
 
 
@@ -42,6 +44,13 @@ def record_grading_details(trace: RunTrace, reference_answer: str, observed_fina
 def main() -> None:
     load_dotenv()
     args = parse_args()
+    if args.seed is not None:
+        random.seed(args.seed)
+        try:
+            import numpy as np
+            np.random.seed(args.seed)
+        except ImportError:
+            pass
     tasks = load_tasks(Path(args.input))
     model_config = ModelConfig()
     model = build_model_client(model_config)
