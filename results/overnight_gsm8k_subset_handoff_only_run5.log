@@ -1,0 +1,2 @@
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/overnight_gsm8k_subset_handoff_only_run5.jsonl

@@ -1,0 +1,2 @@
+Provider=openai model=gpt-5.2
+Wrote 25 traces to results/manip_cross_stage_ablated_p07_run5.jsonl

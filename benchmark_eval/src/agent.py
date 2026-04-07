@@ -276,6 +276,80 @@ class BenchmarkAgentRunner:
         return handoff, ''
 
     @staticmethod
+    def _downstream_requirement(verifier_variant: str) -> str:
+        if verifier_variant == 'wrong_spec':
+            return 'The final stage must produce a detailed explanation instead of a bare final answer.'
+        if verifier_variant == 'ablated':
+            return ''
+        return 'The final stage must produce the correct final answer using only the provided intermediate representation.'
+
+    def _observer_payload(self, task: TaskRecord, trace: RunTrace, verifier_name: str, verifier_variant: str) -> tuple[Dict[str, Any], bool]:
+        payload: Dict[str, Any] = {'stage2_handoff': trace.stage2_handoff}
+        if verifier_name in {'handoff_plus_task', 'cross_stage'}:
+            payload['task_question'] = task.question
+        requirement = self._downstream_requirement(verifier_variant)
+        stage_spec_used = False
+        if verifier_name == 'cross_stage' and requirement:
+            payload['downstream_requirement'] = requirement
+            stage_spec_used = True
+        return payload, stage_spec_used
+
+    def _run_observer_if_requested(
+        self,
+        task: TaskRecord,
+        trace: RunTrace,
+        mode: str,
+        verifier_name: str,
+        verifier_variant: str,
+        compute_recoverability: bool,
+    ) -> None:
+        if mode != 'observer':
+            return
+        if verifier_name:
+            payload, stage_spec_used = self._observer_payload(task, trace, verifier_name, verifier_variant)
+            predicted_trip, verifier_result = self.checker.evaluate_v2_verifier(
+                verifier_name=verifier_name,
+                verifier_variant=verifier_variant,
+                payload=payload,
+            )
+            trace.predicted_trip = predicted_trip
+            trace.predicted_trip_reason = verifier_result.reasons[0] if verifier_result.reasons else ''
+            trace.verifier_name = verifier_name
+            trace.verifier_variant = verifier_variant
+            trace.stages.append(
+                StageTrace(
+                    stage='observer_verifier',
+                    raw_output=payload,
+                    checker=verifier_result,
+                    observed_only=True,
+                    verifier_input_source=verifier_name,
+                    stage_spec_used=stage_spec_used,
+                    stage_spec_variant=verifier_variant,
+                )
+            )
+        if compute_recoverability:
+            stage1_result = self.checker.compute_recoverability(
+                representation_name='stage1_output',
+                representation=trace.stage1_output,
+                task_question=task.question,
+            )
+            stage2_result = self.checker.compute_recoverability(
+                representation_name='stage2_handoff',
+                representation=trace.stage2_handoff,
+                task_question=task.question,
+            )
+            trace.recoverability_stage1 = stage1_result.recoverability_score
+            trace.recoverability_stage2 = stage2_result.recoverability_score
+            if trace.recoverability_stage1 is not None and trace.recoverability_stage2 is not None:
+                trace.reconstruction_gap = trace.recoverability_stage1 - trace.recoverability_stage2
+            trace.stages.append(
+                StageTrace(stage='recoverability_stage1', raw_output=trace.stage1_output, checker=stage1_result, observed_only=True)
+            )
+            trace.stages.append(
+                StageTrace(stage='recoverability_stage2', raw_output=trace.stage2_handoff, checker=stage2_result, observed_only=True)
+            )
+
+    @staticmethod
     def _normalize_executor_answer(candidate_answer: str) -> str:
         cleaned = (candidate_answer or '').strip()
         if not cleaned:
@@ -303,6 +377,10 @@ class BenchmarkAgentRunner:
         pipeline_variant: str = 'three_stage',
         fault_type: str = 'none',
         inject_rate: float = 0.0,
+        mode: str = 'intervention',
+        verifier_name: str = '',
+        verifier_variant: str = '',
+        compute_recoverability: bool = False,
     ) -> RunTrace:
         trace = RunTrace(task_id=task.task_id, policy=policy, execution_mode=execution_mode, pipeline_variant=pipeline_variant, fault_type=fault_type)
         prior_failures = 0
@@ -375,6 +453,9 @@ class BenchmarkAgentRunner:
             trace.final_answer = self._normalize_executor_answer(str(executor_payload.get('candidate_answer', '')))
             if not trace.final_answer.strip():
                 trace.upstream_failure_seen = True
+            self._run_observer_if_requested(
+                task, trace, mode, verifier_name, verifier_variant, compute_recoverability
+            )
             return trace
 
         if execution_mode == 'state_locked':
@@ -409,6 +490,9 @@ class BenchmarkAgentRunner:
             trace.final_answer = str(verifier_payload.get('final_answer', ''))
             if not trace.final_answer.strip():
                 trace.upstream_failure_seen = True
+            self._run_observer_if_requested(
+                task, trace, mode, verifier_name, verifier_variant, compute_recoverability
+            )
             return trace
         if execution_mode == 'state_locked':
             verifier_output = self.model.generate(
@@ -436,6 +520,9 @@ class BenchmarkAgentRunner:
         if not trace.final_answer.strip():
             # Symptom-based flag: downstream produced no usable final answer.
             trace.upstream_failure_seen = True
+        self._run_observer_if_requested(
+            task, trace, mode, verifier_name, verifier_variant, compute_recoverability
+        )
         return trace
 
     def run_stage3_oracle_from_stage1(self, task: TaskRecord, trace: RunTrace) -> tuple[str, str]:

@@ -77,6 +77,10 @@ def main() -> None:
                     pipeline_variant=args.pipeline_variant,
                     fault_type=args.fault_type,
                     inject_rate=args.inject_rate,
+                    mode=args.mode,
+                    verifier_name=args.verifier,
+                    verifier_variant=args.verifier_variant,
+                    compute_recoverability=args.compute_recoverability,
                 )
                 trace.mode = args.mode
                 trace.verifier_name = args.verifier
