@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import json
 import re
 from typing import Tuple
@@ -37,8 +38,16 @@ class SimpleExactMatchGrader:
             parsed = json.loads(cleaned)
             return True, parsed, json.dumps(parsed, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
         except Exception:
+            pass
+        try:
+            parsed = ast.literal_eval(cleaned)
+            if isinstance(parsed, (dict, list, int, float, bool)):
+                return True, parsed, json.dumps(parsed, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        except (ValueError, SyntaxError):
             normalized = self._normalize_whitespace(cleaned)
             return False, normalized, normalized
+        normalized = self._normalize_whitespace(cleaned)
+        return False, normalized, normalized
 
     def grade(self, task: TaskRecord, final_answer: str) -> Tuple[bool, str]:
         expected_raw = task.reference_answer or ""

@@ -119,7 +119,9 @@ class BenchmarkAgentRunner:
     def _build_intermediate_handoff(self, planner_payload: Dict[str, Any]) -> IntermediateHandoff | None:
         plan_steps = self._as_str_list(planner_payload.get('plan'))
         assumptions = self._as_str_list(planner_payload.get('assumptions'))
-        facts = plan_steps + assumptions
+        givens = planner_payload.get('givens') or {}
+        givens_facts = [f"{k}={v}" for k, v in givens.items()] if isinstance(givens, dict) else []
+        facts = givens_facts + plan_steps + assumptions
         summary = ' '.join(plan_steps).strip()
         if not summary and facts:
             summary = facts[0]
@@ -144,7 +146,9 @@ class BenchmarkAgentRunner:
     def _planner_payload_to_handoff_dict(self, planner_payload: Dict[str, Any]) -> Dict[str, Any]:
         plan_steps = self._as_str_list(planner_payload.get('plan'))
         assumptions = self._as_str_list(planner_payload.get('assumptions'))
-        facts = plan_steps + assumptions
+        givens = planner_payload.get('givens') or {}
+        givens_facts = [f"{k}={v}" for k, v in givens.items()] if isinstance(givens, dict) else []
+        facts = givens_facts + plan_steps + assumptions
         summary = ' '.join(plan_steps).strip()
         if not summary and facts:
             summary = facts[0]
@@ -289,12 +293,12 @@ class BenchmarkAgentRunner:
             fallback_output = self._run_stage('planner', task, payload={'question': task.question}, fallback=True)
             fallback_check = self.checker.check('planner', fallback_output, task.model_dump())
             self._record_stage(trace, 'planner', fallback_output, fallback_check, breaker_tripped=True, used_fallback=True)
-            planner_payload = self._safe_json_loads(fallback_output, {'plan': [], 'assumptions': []})
+            planner_payload = self._safe_json_loads(fallback_output, {'givens': {}, 'plan': [], 'assumptions': []})
             if not fallback_check.valid:
                 prior_failures += 1
         else:
             self._record_stage(trace, 'planner', planner_output, planner_check, breaker_tripped=False, used_fallback=False)
-            planner_payload = self._safe_json_loads(planner_output, {'plan': [], 'assumptions': []})
+            planner_payload = self._safe_json_loads(planner_output, {'givens': {}, 'plan': [], 'assumptions': []})
             if not planner_check.valid:
                 prior_failures += 1
         trace.stage1_output = planner_payload
