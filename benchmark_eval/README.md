@@ -1,5 +1,8 @@
 # benchmark_eval
 
+> **Correction, 2026-10-25.** `data/gaia_subset.jsonl` is not GAIA: it holds 25 simple arithmetic tasks.
+> Results with `gaia_` task ids are not GAIA results. Details: [CORRECTIONS.md](../CORRECTIONS.md).
+
 Real-task benchmark harness for the `circuit-breaker-agents` repo.
 
 This version is wired for the **OpenAI Python SDK** using the **Responses API**, which the official SDK describes as the primary API for model interaction. The official Python examples show `OpenAI().responses.create(...)` with `instructions` and `input`, and also note that Chat Completions remains supported. citeturn606981search1turn606981search2
