@@ -1,5 +1,8 @@
 # Circuit Breaker Patterns for Multi-Agent LLM Systems
 
+> **Correction, 2026-10-25.** On the branches `two_datasets`, `arixvplus_v2`, `codex-completeness-cb` and `version2_start`,
+> `benchmark_eval/data/gaia_subset.jsonl` is not GAIA: it holds 25 simple arithmetic tasks. Details: [CORRECTIONS.md](CORRECTIONS.md).
+
 [![Reproducible Research](https://img.shields.io/badge/Reproducible-Research-brightgreen.svg)](https://github.com/hamley241/circuit-breaker-agents)
 [![Monte Carlo Validated](https://img.shields.io/badge/Monte%20Carlo-Validated-blue.svg)](COMPREHENSIVE_RESULTS_2026-03-30.md)
 
